@@ -1,0 +1,110 @@
+ /* Stili CSS */
+ body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #121212; /* Sfondo scuro */
+    color: #fff;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    background-color: #2a343c; /* Sfondo della navbar */
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: solid rgb(72, 192, 16) 2px;
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    margin-right: 20px; /* Spazio tra il logo e il menu */
+}
+
+.navbar-logo a {
+    color: #BB3A58; /* Verde brillante */
+    text-decoration: none;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.navbar-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    padding: 15px 20px;
+}
+
+.navbar-menu li {
+    margin: 0 15px;
+}
+
+.navbar-menu a {
+    color: #f2f5ea;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.navbar-menu a:hover {
+    color: #BB3A58; /* Colore verde al passaggio del mouse */
+}
+
+.navbar-filter {
+    margin-left: auto; /* Sposta il pulsante di filtro completamente a destra */
+}
+
+.navbar-filter .filter-button {
+    background-color: #BB3A58;
+    border: none;
+    color: #2a343c;
+    padding: 8px 15px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.navbar-filter .filter-button:hover {
+    background-color:#BB3A58 ;
+    color:#f2f5ea ;
+}
+li a.active{color: #BB3A58;}
+
+.navbar-buttons {
+    margin-left: auto; /* Sposta i pulsanti all'estrema destra */
+    display: flex;
+    gap: 10px; /* Spazio tra i pulsanti */
+    
+}
+.filter-button, .login-button {
+    padding: 8px 15px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.filter-button {
+    background-color: #BB3A58;
+    color: #000;
+}
+
+.filter-button:hover {
+    background-color: #f2f5ea;
+    color: #BB3A58;
+}
+
+.login-button {
+    background-color: #f2f5ea;
+    color: #000;
+    font-weight: bold;
+}
+
+.login-button:hover {
+    background-color: #BB3A58;
+    color: #f2f5ea;
+}
