@@ -108,3 +108,61 @@ li a.active{color: #BB3A58;}
     background-color: #BB3A58;
     color: #f2f5ea;
 }
+/* tr{
+    display: inline;
+    
+}
+
+button.filt{
+    background-color: #2a9626;
+    color: #f2f5ea;
+} */
+select {
+   
+    background-color: #2a343c;
+    border: rgb(72, 192, 16) solid 2px;
+    border-radius: 5px;
+    padding: 10px 15px;
+    color: #f2f5ea;
+    width: 200px; /* Stessa larghezza per tutte */
+    text-align: left; /* Allinea il testo a sinistra */
+    font-size: 1em; /* Dimensione uniforme del testo */
+    appearance: none; /* Rimuove gli stili di default del browser */
+}
+select:hover{
+    background-color:rgb(72, 192, 16);
+    color: #f2f5ea;
+    border: #2a343c solid 2px;
+
+}
+select option {
+    text-align: left;
+}
+.filter-container {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Spazio tra le select e il bottone */
+    margin-top: 10px;
+}
+h2 {
+     /* Spazio tra il titolo e il contenitore */padding-left: 5px;
+    text-align: center; /* Centrare il titolo */
+}
+
+button.filt {
+    padding: 10px 20px;
+    width: 200px;
+    background-color: #2a9626;
+    border: none;
+    color: #f2f5ea;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button.filt:hover {
+    background-color: #f2f5ea;
+    color: #2a9626;
+    
+}
