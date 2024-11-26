@@ -18,10 +18,22 @@ document.addEventListener("DOMContentLoaded", function() {
             return;
         }
 
-        // Simula l'invio dell'email per il recupero password
-        alert(`Istruzioni per il recupero della password sono state inviate a ${email}.`);
-
-        // Puoi redirigere l'utente a una pagina di conferma o login
-        window.location.href = "login.html";  // Redirige l'utente alla pagina di login
+        // Invia una richiesta al server per inviare l'email di recupero
+        fetch('http://localhost:3000/send-recovery-email', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email: email })
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(data.message || 'Le istruzioni sono state inviate!');
+            window.location.href = "login.html";  // Redirige alla pagina di login
+        })
+        .catch(error => {
+            console.error('Errore:', error);
+            alert('Si è verificato un errore. Riprova.');
+        });
     });
 });
