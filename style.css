@@ -88,15 +88,12 @@ li a.active{color: #BB3A58;}
     transition: all 0.3s ease;
 }
 
-.filter-button {
+.filt {
     background-color: #BB3A58;
     color: #000;
 }
 
-.filter-button:hover {
-    background-color: #f2f5ea;
-    color: #BB3A58;
-}
+
 
 .login-button {
     background-color: #f2f5ea;
@@ -107,6 +104,11 @@ li a.active{color: #BB3A58;}
 .login-button:hover {
     background-color: #BB3A58;
     color: #f2f5ea;
+}
+button.filt:hover {
+    background-color: #f2f5ea;
+    color: #2a9626;
+    transform: scale(1.05); /* Slightly enlarging the button */
 }
 /* tr{
     display: inline;
@@ -141,8 +143,9 @@ select option {
 .filter-container {
     display: flex;
     align-items: center;
-    gap: 15px; /* Spazio tra le select e il bottone */
+    gap: 15px;
     margin-top: 10px;
+    flex-wrap: wrap;
 }
 h2 {
      /* Spazio tra il titolo e il contenitore */padding-left: 5px;
@@ -166,3 +169,85 @@ button.filt:hover {
     color: #2a9626;
     
 }
+
+/* Griglia per i film */
+/* Griglia dei film */
+.movies-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 colonne */
+    gap: 20px; /* Spazio tra le card */
+    padding: 20px;
+    justify-items: center;
+}
+
+/* Singola card */
+.movie-card {
+    background-color: #1c1c1c; /* Sfondo scuro */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+    width: 150px; /* Adattata per il layout */
+    text-align: center;
+}
+
+.movie-card:hover {
+    transform: scale(1.05); /* Leggero ingrandimento */
+}
+
+/* Miniatura e badge */
+.movie-thumbnail-container {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.movie-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.movie-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #2ecc71; /* Verde brillante */
+    color: #fff;
+    font-size: 0.8em;
+    padding: 5px 8px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* Informazioni sul film */
+.movie-info {
+    padding: 10px 5px;
+}
+
+.movie-title {
+    font-size: 1em; /* Testo principale */
+    margin: 5px 0;
+    color: #f2f5ea;
+    text-overflow: ellipsis; /* Per il testo lungo */
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.movie-duration {
+    font-size: 0.85em; /* Testo secondario */
+    color: #BB3A58;
+}
+
+.logo-image {
+    height: 60px; /* Altezza del logo */
+    width: auto;  /* Mantiene le proporzioni */
+    display: block;
+}
+
+/* Stile per la finestra pop-up */
+
+
+
