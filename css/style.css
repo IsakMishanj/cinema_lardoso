@@ -1,0 +1,253 @@
+ /* Stili CSS */
+ body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #121212; /* Sfondo scuro */
+    color: #fff;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    background-color: #2a343c; /* Sfondo della navbar */
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    margin-right: 20px; /* Spazio tra il logo e il menu */
+}
+
+.navbar-logo a {
+    color: #BB3A58; /* Verde brillante */
+    text-decoration: none;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.navbar-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    padding: 15px 20px;
+}
+
+.navbar-menu li {
+    margin: 0 15px;
+}
+
+.navbar-menu a {
+    color: #f2f5ea;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.navbar-menu a:hover {
+    color: #BB3A58; /* Colore verde al passaggio del mouse */
+}
+
+.navbar-filter {
+    margin-left: auto; /* Sposta il pulsante di filtro completamente a destra */
+}
+
+.navbar-filter .filter-button {
+    background-color: #BB3A58;
+    border: none;
+    color: #2a343c;
+    padding: 8px 15px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.navbar-filter .filter-button:hover {
+    background-color:#BB3A58 ;
+    color:#f2f5ea ;
+}
+li a.active{color: #BB3A58;}
+
+.navbar-buttons {
+    margin-left: auto; /* Sposta i pulsanti all'estrema destra */
+    display: flex;
+    gap: 10px; /* Spazio tra i pulsanti */
+    
+}
+.filter-button, .login-button {
+    padding: 8px 15px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.filt {
+    background-color: #BB3A58;
+    color: #000;
+}
+
+
+
+.login-button {
+    background-color: #f2f5ea;
+    color: #000;
+    font-weight: bold;
+}
+
+.login-button:hover {
+    background-color: #BB3A58;
+    color: #f2f5ea;
+}
+button.filt:hover {
+    background-color: #f2f5ea;
+    color: #2a9626;
+    transform: scale(1.05); /* Slightly enlarging the button */
+}
+/* tr{
+    display: inline;
+    
+}
+
+button.filt{
+    background-color: #2a9626;
+    color: #f2f5ea;
+} */
+select {
+   
+    background-color: #2a343c;
+    border: #BB3A58 solid 2px;
+    border-radius: 5px;
+    padding: 10px 15px;
+    color: #f2f5ea;
+    width: 200px; /* Stessa larghezza per tutte */
+    text-align: left; /* Allinea il testo a sinistra */
+    font-size: 1em; /* Dimensione uniforme del testo */
+    appearance: none; /* Rimuove gli stili di default del browser */
+}
+select:hover{
+    background-color:#BB3A58;
+    color: #f2f5ea;
+    border: #2a343c solid 2px;
+
+}
+select option {
+    text-align: left;
+}
+.filter-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+h2 {
+     /* Spazio tra il titolo e il contenitore */padding-left: 5px;
+    text-align: center; /* Centrare il titolo */
+}
+
+button.filt {
+    padding: 10px 20px;
+    width: 200px;
+    background-color: #BB3A58;
+    border: none;
+    color: #f2f5ea;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    float:right;
+}
+
+button.filt:hover {
+    background-color: #f2f5ea;
+    color: #BB3A58;
+}
+
+/* Griglia per i film */
+/* Griglia dei film */
+.movies-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 colonne */
+    gap: 20px; /* Spazio tra le card */
+    padding: 20px;
+    justify-items: center;
+}
+
+/* Singola card */
+.movie-card {
+    background-color: #1c1c1c; /* Sfondo scuro */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+    width: 150px; /* Adattata per il layout */
+    text-align: center;
+}
+
+.movie-card:hover {
+    transform: scale(1.05); /* Leggero ingrandimento */
+}
+
+/* Miniatura e badge */
+.movie-thumbnail-container {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.movie-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.movie-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #2ecc71; /* Verde brillante */
+    color: #fff;
+    font-size: 0.8em;
+    padding: 5px 8px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* Informazioni sul film */
+.movie-info {
+    padding: 10px 5px;
+}
+
+.movie-title {
+    font-size: 1em; /* Testo principale */
+    margin: 5px 0;
+    color: #f2f5ea;
+    text-overflow: ellipsis; /* Per il testo lungo */
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.movie-duration {
+    font-size: 0.85em; /* Testo secondario */
+    color: #BB3A58;
+}
+
+.logo-image {
+    height: 60px; /* Altezza del logo */
+    width: auto;  /* Mantiene le proporzioni */
+    display: block;
+}
+
+/* Stile per la finestra pop-up */
+
+
+

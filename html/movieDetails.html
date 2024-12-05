@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Movie Details</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <a href="index.html">
+                <img class="logo-image" src="img/logo.png" alt="Logo">
+            </a>
+        </div>
+    </nav>
+    <div class="movie-details-container">
+        <h1 id="movie-title">Loading...</h1>
+        <img id="movie-poster" src="" alt="Movie Poster">
+        <p id="movie-description">Loading...</p>
+        <button onclick="window.history.back()">Go Back</button>
+    </div>
+    <script>
+        // Leggi il parametro 'movie' dall'URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const movieId = urlParams.get('movie');
+
+        // Dati esempio per i film (potresti caricarli dinamicamente da un server)
+        const movies = {
+            'jojo-rabbit': {
+                title: 'Jojo Rabbit',
+                poster: 'img/imgF/jojoR.jpg',
+                description: 'A World War II satire that follows a lonely German boy whose world view is turned upside down.'
+            },
+            'sharknado': {
+                title: 'Sharknado',
+                poster: 'img/imgF/sharknado.jpg',
+                description: 'When a freak hurricane swamps Los Angeles, thousands of sharks terrorize the waterlogged populace.'
+            }
+        };
+
+        // Mostra i dettagli del film selezionato
+        if (movies[movieId]) {
+            document.getElementById('movie-title').textContent = movies[movieId].title;
+            document.getElementById('movie-poster').src = movies[movieId].poster;
+            document.getElementById('movie-description').textContent = movies[movieId].description;
+        } else {
+            document.getElementById('movie-title').textContent = 'Movie Not Found';
+            document.getElementById('movie-description').textContent = 'We couldn\'t find the movie details.';
+        }
+    </script>
+</body>
+</html>
