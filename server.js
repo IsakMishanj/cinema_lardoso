@@ -22,7 +22,24 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "html", "home.html"));
 });
 
+
+//per carcare dal db
+app.get("/film", async (req, res) => {
+    try {
+      const { rows } = await pool.query("SELECT * FROM film;");
+      res.json(rows);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("Errore del server");
+    }
+  });
+
 //sempre in fondo
 app.listen(port, () => {
     console.log(`Server avviato su http://localhost:${port}`);
   });
+  
+
+
+  
+  
