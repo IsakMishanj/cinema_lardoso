@@ -18,7 +18,6 @@
             <li><a class="active" href="trending.html">Trending</a></li>
             <!-- <li><a href="#">Movies</a></li>
             <li><a href="#">TV Shows</a></li> -->
-            <li><a href="myfilms.html">My films</a></li>
             <!-- <li><a href="imdb.html">Top IMDB</a></li> -->
         </ul>
         <div class="navbar-buttons">
@@ -35,6 +34,7 @@
         <td>
             
             <select id="genre" name="genre" placeholder="Genre">
+                <option value="Genre">Genre</option>
                 <option value="horror">Horror</option>
                 <option value="action">Action</option>
                 <option value="comedy">Comedy</option>
@@ -78,10 +78,16 @@
             
                 
             
-                <button class="filt" type="button" value="filter-button" id="button_filter">Filteros</button>
+                <button class="filt" type="button" value="filter-button" id="button_filter">Filters</button>
 
+                <div class="search-bar">
+                    <input type="text" id="search-input" placeholder="Search movies..." aria-label="Search">
+                    <button class="search-button" id="search-button">Search</button>
+                </div>
     </div>
-    <div class="movies-grid">
+    <div class="moivies-area">
+        <h2>Our catalogue:</h2>
+        <div class="movies-grid">
         <!-- Singola Card -->
         <div class="movie-card" onclick="openReviewPage('jojo-rabbit')">
             <div class="movie-thumbnail-container">
@@ -109,6 +115,8 @@
         </div>
         <!-- Aggiungi altre card qui -->
     </div>
+    </div>
+    
 
     
     
