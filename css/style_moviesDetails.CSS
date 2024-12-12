@@ -1,0 +1,211 @@
+/* Stile per il contenitore principale */
+
+body {
+    margin: 0;
+    font-family:  'Exo','Montserrat','Open Sans', 'Arial Narrow Bold', sans-serif, sans-serif;
+    background-color: #2a343c; /* Sfondo scuro */
+    color: #fff;
+  }
+  
+  .navbar {
+    display: flex;
+    align-items: center;
+    background-color: #1a1a1a;
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .navbar-logo {
+    display: flex;
+    align-items: center;
+    margin-right: 20px; /* Spazio tra il logo e il menu */
+  }
+  
+  .navbar-logo a {
+    color: #bb3a58; /* Verde brillante */
+    text-decoration: none;
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+
+  .navbar-logo a img{
+    width: 150px;
+  }
+  
+  .navbar-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    padding: 15px 20px;
+  }
+  
+  .navbar-menu li {
+    margin: 0 15px;
+  }
+  
+  .navbar-menu a {
+    color: #f2f5ea;
+    text-decoration: none;
+    font-size: 1em;
+  }
+  
+  .navbar-menu a:hover {
+    color: #bb3a58; /* Colore verde al passaggio del mouse */
+  }
+.login-button {
+    padding: 8px 15px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    transition: all 0.3s ease;
+  }
+  .login-button:hover {
+    background-color: #bb3a58;
+    color: #f2f5ea;
+  }
+
+
+.movie-details-container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+/* Intestazione del film */
+.movie-header {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+#movie-poster {
+    width: 100px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.movie-info {
+    flex: 1;
+    color: #f2f5ea;
+}
+
+.movie-info h1 {
+    margin: 0;
+    font-size: 2.5em;
+    color: #bb3a58;
+}
+
+.movie-info p {
+    margin: 5px 0;
+    font-size: 1.2em;
+}
+
+.movie-info .back-button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #bb3a58;
+    color: #f2f5ea;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.movie-info .back-button:hover {
+    background-color: #f2f5ea;
+    color: #bb3a58;
+}
+
+/* Descrizione del film */
+.movie-description {
+    margin-top: 20px;
+}
+
+.movie-description h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: #bb3a58;
+}
+
+.movie-description p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #f2f5ea;
+}
+
+/* Pulsanti navbar */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1a1a1a;
+    padding: 10px 20px;
+}
+
+.navbar a.active {
+    color: #bb3a58;
+    font-weight: bold;
+}
+
+
+.movie-rating {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+    font-size: 1.2em;
+    color: #ffcc00; /* Colore stelle */
+}
+
+.rating-stars::before {
+    content: "★★★★★"; 
+    color: #d3d3d3;
+    display: inline-block;
+    position: relative;
+}
+
+.rating-stars span::after {
+    content: "★★★★☆";
+    color: #ffcc00;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 90%; 
+    overflow: hidden;
+}
+
+.movie-rating {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.rating-stars {
+    position: relative;
+    font-size: 1.5em;
+    color: #d3d3d3; 
+    line-height: 1;
+}
+
+.stars-filled {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #ffcc00;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0%;
+}
+
+.stars-empty {
+    color: #d3d3d3;
+    z-index: -1;
+}
