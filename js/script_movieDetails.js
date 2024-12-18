@@ -25,3 +25,7 @@ function renderRating() {
     starsFilled.style.width = `${percentage}%`;
     ratingValue.textContent = `${rating.toFixed(1)}/5`;
 }
+
+document.querySelector('.back-button').addEventListener('click', () => {
+    window.history.back();
+  });

@@ -14,8 +14,7 @@
             </a>
         </div>
         <ul class="navbar-menu">
-            <li><a href="../html/">Home</a></li>
-            <li><a href="trending.html" class="active">Trending</a></li>
+            <li><a href="../html/home.html">Home</a></li>
         </ul>
         <div class="navbar-buttons">
             <button class="login-button" onclick="window.location.href='login.html'">Login</button>
@@ -27,15 +26,20 @@
             <div class="movie-info">
                 <h1 id="movie-title">Shrek</h1>
                 <p id="movie-year">2001</p>
-                <p id="movie-genre">Animation, Adventure, Comedy</p>
+                <label for="movie-genre">Genere:</label>
+                <span id="movie-genre">Animation, Adventure, Comedy</span><br>
+                <label for="mivie-direction">Regista:</label>
+                <span id="mivie-direction">Rick Lards</span><br>
+                <label for="movie-cast">Cast:</label>
+                <span id="movie-cast">Cast</span><br>
                 <div class="movie-rating">
                     <div class="rating-stars">
                         <span id="stars-filled" class="stars-filled"></span>
                         <span class="stars-empty"></span>
                     </div>
-                    <span id="movie-rating-value" onload="renderRating()">4.5/5</span>
-                </div>
-                <button onclick="window.history.back()" class="back-button">Go Back</button>
+                    <span id="movie-rating-value" onload="renderRating()">4.5</span><span>/5</span>
+            </div>
+                <button class="back-button" onclick="goBack()">Go Back</button>
             </div>
         </div>
         <div class="movie-description">
