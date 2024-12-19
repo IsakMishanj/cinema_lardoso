@@ -17,7 +17,9 @@ app.use("/css", express.static(path.join(__dirname, "css")));
 app.use("/js", express.static(path.join(__dirname, "js")));
 app.use("/img", express.static(path.join(__dirname, "img")));
 app.use(express.json());
-
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "html", "home.html"));
+});
 // app.get("/genere", async (req, res) => {
 //   try {
 //     const { rows } = await pool.query("SELECT * FROM genere");
@@ -32,8 +34,9 @@ app.use(express.json());
 //per carcare dal db
 app.get("/film", async (req, res) => {
     try {
-      const { rows } = await pool.query("SELECT * FROM film JOIN film_genere ON film.id = film_genere.film_id JOIN genere ON film_genere.genere_id = genere.id; ");     //////fslloo a casa chiedi a chat
+      const { rows } = await pool.query("SELECT * FROM film JOIN film_genere ON film.idf = film_genere.idf JOIN genere ON film_genere.idg = genere.idg;"); 
       res.json(rows);
+      console.log( res.json(rows));
     } catch (error) {
       console.error(error);
       res.status(500).send("Errore del server");
@@ -47,3 +50,5 @@ app.listen(port, () => {
     console.log(`Server avviato su http://localhost:${port}`);
   });
   
+  // SELECT * FROM film JOIN film_genere ON film.idf = film_genere.idf JOIN genere ON film_genere.idg = genere.idg; 
+  // SELECT film.idf, film.titolo, film.durata, ARRAY_AGG(DISTINCT genere.nome) AS generiFROM filmJOIN film_genere ON film.idf = film_genere.idfJOIN genere ON film_genere.idg = genere.idgGROUP BY film.idf, film.titolo, film.durata;

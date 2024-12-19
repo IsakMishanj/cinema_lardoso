@@ -10,12 +10,17 @@ document.addEventListener("DOMContentLoaded", async () => {
       // Chiamata API per ottenere i servizi
       const responseF = await fetch("/film");
       const film = await responseF.json();
-      const responseG = await fetch("/genere");
-      const genere = await responseG.json();
+      console.log(film);
+      // const responseG = await fetch("/genere");
+      // const genere = await responseG.json();
       // Aggiungi ogni servizio come card
-      film.forEach((film,genere) => {
+      film.forEach((film) => {
         const card = document.createElement("div");
         card.className = "card";
+        card.onclick = function () {
+          // Cambia l'URL con il percorso della pagina di dettaglio del film
+          window.location.href = `/film.html?id=${filmId}`;
+      };
   
         card.innerHTML = `
           <div class="card-img" style="background-image: url('${film.locandina}');"></div>
@@ -35,7 +40,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             </div>
           </div>
         `;
-  
+        
         moviesgrid.appendChild(card);
       });
     } catch (error) {
