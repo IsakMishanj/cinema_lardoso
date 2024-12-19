@@ -18,21 +18,21 @@ app.use("/js", express.static(path.join(__dirname, "js")));
 app.use("/img", express.static(path.join(__dirname, "img")));
 app.use(express.json());
 
-app.get("/genere", async (req, res) => {
-  try {
-    const { rows } = await pool.query("SELECT * FROM genere");
-    res.json(rows);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Errore del server");
-  }
-});
+// app.get("/genere", async (req, res) => {
+//   try {
+//     const { rows } = await pool.query("SELECT * FROM genere");
+//     res.json(rows);
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).send("Errore del server");
+//   }
+// });
 
 
 //per carcare dal db
 app.get("/film", async (req, res) => {
     try {
-      const { rows } = await pool.query("SELECT * FROM film JOIN genere ON ");     //////fslloo a casa chiedi a chat
+      const { rows } = await pool.query("SELECT * FROM film JOIN film_genere ON film.id = film_genere.film_id JOIN genere ON film_genere.genere_id = genere.id; ");     //////fslloo a casa chiedi a chat
       res.json(rows);
     } catch (error) {
       console.error(error);
@@ -40,7 +40,6 @@ app.get("/film", async (req, res) => {
     }
   });
   
- 
 
 
 //sempre in fondo

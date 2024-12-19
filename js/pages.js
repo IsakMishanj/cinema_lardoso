@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           <div class="card-img" style="background-image: url('${film.locandina}');"></div>
           <div class="card-info">
             <p class="text-title">${film.titolo_f}</p>
-            <p class="text-body">${genere.nome_g}-${film.data_uscita}-${film.durata}</p>
+            <p class="text-body">${film.nome_g}-${film.data_uscita}-${film.durata}</p>
             
           </div>
           <div class="card-footer">
