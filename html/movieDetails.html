@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style_moviesDetails.CSS">
+    <title>Movie Details</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <a href="index.html">
+                <img class="logo-image" src="../img/logo-sito.png" alt="Logo">
+            </a>
+        </div>
+        <ul class="navbar-menu">
+            <li><a href="../html/home.html">Home</a></li>
+        </ul>
+        <div class="navbar-buttons">
+            <button class="login-button" onclick="window.location.href='login.html'">Login</button>
+        </div>
+    </nav>
+    <div class="movie-details-container">
+        <div class="movie-header">
+            <img id="movie-poster" src="../img/Shrek - Locandina.jpg" alt="Movie Poster">
+            <div class="movie-info">
+                <h1 id="movie-title">Shrek</h1>
+                <p id="movie-year">2001</p>
+                <label for="movie-genre">Genere:</label>
+                <span id="movie-genre">Animation, Adventure, Comedy</span><br>
+                <label for="mivie-direction">Regista:</label>
+                <span id="mivie-direction">Rick Lards</span><br>
+                <label for="movie-cast">Cast:</label>
+                <span id="movie-cast">Cast</span><br>
+                <div class="movie-rating">
+                    <div class="rating-stars">
+                        <span id="stars-filled" class="stars-filled"></span>
+                        <span class="stars-empty"></span>
+                    </div>
+                    <span id="movie-rating-value" onload="renderRating()">4.5</span><span>/5</span>
+            </div>
+                <button class="back-button" onclick="goBack()">Go Back</button>
+            </div>
+        </div>
+        <div class="movie-description">
+            <h2>Description</h2>
+            <p id="movie-description">
+                Shrek, a green ogre, lives in the swamp until his peaceful life is disrupted by fairy tale creatures.
+                To reclaim his home, he sets out on an adventure that leads to unexpected friendships and love.
+            </p>
+        </div>
+    </div>
+    <script src="../js/script_movieDetails.js"></script>
+</body>
+</html>
