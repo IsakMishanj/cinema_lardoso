@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style_moviesDetails.CSS">
+    <title>Movie Details</title>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <a href="index.html">
+                <img class="logo-image" src="../img/logo-sito.png" alt="Logo">
+            </a>
+        </div>
+        <ul class="navbar-menu">
+            <li><a href="../html/home.html">Home</a></li>
+        </ul>
+        <div class="navbar-buttons">
+            <button class="login-button" onclick="window.location.href='login.html'">Login</button>
+        </div>
+    </nav>
+
+    <div class="movie-details-container">
+        <div class="movie-header">
+            <img id="movie-poster" src="" alt="Movie Poster">
+            <div class="movie-info">
+                <h1 id="movie-title"></h1>
+                <p id="movie-year"></p>
+                <label for="movie-genre">Genere:</label>
+                <span id="movie-genre"></span><br>
+                <label for="movie-direction">Regista:</label>
+                <span id="movie-direction"></span><br>
+                <label for="movie-cast">Cast:</label>
+                <span id="movie-cast"></span><br>
+                <div id="movie-rating">
+                    <span id="movie-rating-stars"></span>
+                    <span id="movie-rating-value"></span>
+                </div>
+                
+                <button class="back-button" onclick="goBack()">Indietro</button>
+            </div>
+        </div>
+
+        <div class="movie-description">
+            <h2>Descrizione:</h2>
+            <p id="movie-description">
+                Shrek, a green ogre, lives in the swamp until his peaceful life is disrupted by fairy tale creatures.
+                To reclaim his home, he sets out on an adventure that leads to unexpected friendships and love.
+            </p>
+        </div>
+
+        <div class="reviews">
+            <h2>Recensioni:</h2>
+            <div class="review">
+                <div class="user-img">
+                    <img src="../img/imgU/user-icon.jpg" alt="img-user">
+                </div>
+                <div class="user-review">
+                    <p><strong>NOME UTENTE</strong></p>
+                    <p>RECENSIONE</p>
+                </div>
+            </div>
+            <button class="all-reviews">TUTTE LE RECENSIONI</button>
+        </div>
+
+        <div class="movies-correlated">
+            <h2>Correlati:</h2>
+            <div class="carosello-container">
+                <button class="carousel-button left" onclick="scrollCarousel(-1)">&#10094;</button>
+                <div class="movies-carosello">
+                    <!-- Cards del film -->
+                    <div class="movie-card" onclick="openReviewPopup('Jojo Rabbit')">
+                        <div class="movie-thumbnail-container">
+                            <img src="../img/imgF/jojoR.jpg" alt="Jojo Rabbit" class="movie-thumbnail">
+                            <span class="movie-badge">HD</span>
+                        </div>
+                        <div class="movie-info">
+                            <h3 class="movie-title">Jojo Rabbit</h3>
+                            <p class="movie-duration">2019 - 148 min</p>
+                        </div>
+                    </div>
+
+                    <div class="movie-card" onclick="openReviewPopup('Sharknado')">
+                        <div class="movie-thumbnail-container">
+                            <img src="../img/imgF/sharknado.jpg" alt="Sharknado" class="movie-thumbnail">
+                            <span class="movie-badge">HD</span>
+                        </div>
+                        <div class="movie-info">
+                            <h3 class="movie-title">Sharknado</h3>
+                            <p class="movie-duration">2013 - 83 min</p>
+                        </div>
+                    </div>
+
+                    <div class="movie-card" onclick="openReviewPopup('Sharknado')">
+                        <div class="movie-thumbnail-container">
+                            <img src="../img/imgF/sharknado.jpg" alt="Sharknado" class="movie-thumbnail">
+                            <span class="movie-badge">HD</span>
+                        </div>
+                        <div class="movie-info">
+                            <h3 class="movie-title">Sharknado</h3>
+                            <p class="movie-duration">2013 - 83 min</p>
+                        </div>
+                    </div>
+
+                    <div class="movie-card" onclick="openReviewPopup('Sharknado')">
+                        <div class="movie-thumbnail-container">
+                            <img src="../img/imgF/sharknado.jpg" alt="Sharknado" class="movie-thumbnail">
+                            <span class="movie-badge">HD</span>
+                        </div>
+                        <div class="movie-info">
+                            <h3 class="movie-title">Sharknado</h3>
+                            <p class="movie-duration">2013 - 83 min</p>
+                        </div>
+                    </div>
+
+                    <div class="movie-card" onclick="openReviewPopup('Sharknado')">
+                        <div class="movie-thumbnail-container">
+                            <img src="../img/imgF/sharknado.jpg" alt="Sharknado" class="movie-thumbnail">
+                            <span class="movie-badge">HD</span>
+                        </div>
+                        <div class="movie-info">
+                            <h3 class="movie-title">Sharknado</h3>
+                            <p class="movie-duration">2013 - 83 min</p>
+                        </div>
+                    </div>
+
+                    <div class="movie-card" onclick="openReviewPopup('Sharknado')">
+                        <div class="movie-thumbnail-container">
+                            <img src="../img/imgF/sharknado.jpg" alt="Sharknado" class="movie-thumbnail">
+                            <span class="movie-badge">HD</span>
+                        </div>
+                        <div class="movie-info">
+                            <h3 class="movie-title">Sharknado</h3>
+                            <p class="movie-duration">2013 - 83 min</p>
+                        </div>
+                    </div>
+
+                    <div class="movie-card" onclick="openReviewPopup('Sharknado')">
+                        <div class="movie-thumbnail-container">
+                            <img src="../img/imgF/sharknado.jpg" alt="Sharknado" class="movie-thumbnail">
+                            <span class="movie-badge">HD</span>
+                        </div>
+                        <div class="movie-info">
+                            <h3 class="movie-title">Sharknado</h3>
+                            <p class="movie-duration">2013 - 83 min</p>
+                        </div>
+                    </div>
+
+                    <div class="movie-card" onclick="openReviewPopup('Sharknado')">
+                        <div class="movie-thumbnail-container">
+                            <img src="../img/imgF/sharknado.jpg" alt="Sharknado" class="movie-thumbnail">
+                            <span class="movie-badge">HD</span>
+                        </div>
+                        <div class="movie-info">
+                            <h3 class="movie-title">Sharknado</h3>
+                            <p class="movie-duration">2013 - 83 min</p>
+                        </div>
+                    </div>
+
+                    <div class="movie-card" onclick="openReviewPopup('Sharknado')">
+                        <div class="movie-thumbnail-container">
+                            <img src="../img/imgF/sharknado.jpg" alt="Sharknado" class="movie-thumbnail">
+                            <span class="movie-badge">HD</span>
+                        </div>
+                        <div class="movie-info">
+                            <h3 class="movie-title">Sharknado</h3>
+                            <p class="movie-duration">2013 - 83 min</p>
+                        </div>
+                    </div>
+                    <!-- Aggiungi altre card qui -->
+                </div>
+                <button class="carousel-button right" onclick="scrollCarousel(1)">&#10095;</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/script_movieDetails.js"></script>
+</body>
+
+</html>

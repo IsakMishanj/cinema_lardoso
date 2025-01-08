@@ -1,0 +1,413 @@
+/* Stile per il contenitore principale */
+
+body {
+  margin: 0;
+  font-family:  'Exo','Montserrat','Open Sans', 'Arial Narrow Bold', sans-serif, sans-serif;
+  background-color: #2a343c;
+  color: #fff;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  background-color: #1a1a1a;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: #bb3a58 solid 1px;
+}
+  
+.navbar-buttons {
+  margin-left: auto;
+  display: flex;
+  gap: 10px;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+  
+.navbar-logo a {
+  color: #bb3a58;
+  text-decoration: none;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.navbar-logo a img {
+  width: 120px; /* Adattabile */
+  max-width: 100%;
+}
+  
+.navbar-menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-grow: 1; /* Occupa lo spazio disponibile tra il logo e il login */
+  justify-content: flex-start; /* Allinea gli elementi a sinistra */
+  gap: 20px; /* Spazio tra gli elementi del menu */
+}
+
+.navbar-menu li {
+  margin: 0 15px;
+}
+  
+.navbar-menu a {
+  color: #f2f5ea;
+  text-decoration: none;
+  font-size: 1em;
+}
+  
+.navbar-menu a:hover {
+  color: #bb3a58;
+}
+
+.login-button {
+  padding: 8px 15px;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  transition: all 0.3s ease;
+  margin-left: 20px
+}
+
+.login-button:hover {
+  background-color: #bb3a58;
+  color: #f2f5ea;
+}
+
+.movie-details-container {
+  width: 90%; /* Adattabile */
+  max-width: 1200px; /* Limita larghezza massima */
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.movie-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+
+#movie-poster {
+  width: 200px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.movie-info {
+  flex: 1;
+  color: #f2f5ea;
+}
+
+.movie-info h1 {
+  margin: 0;
+  font-size: 2em;
+  color: #bb3a58;
+}
+
+.movie-info p {
+  margin: 5px 0;
+  font-size: 1em;
+}
+
+.movie-info .back-button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #bb3a58;
+  color: #f2f5ea;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.movie-info .back-button:hover {
+  background-color: #f2f5ea;
+  color: #bb3a58;
+}
+
+.movie-description {
+  margin-top: 20px;
+}
+
+.movie-description p {
+  font-size: 1em;
+  line-height: 1.6;
+  color: #f2f5ea;
+}
+/* Pulsanti navbar */
+
+.navbar a.active {
+  color: #bb3a58;
+  font-weight: bold;
+}
+
+.movie-rating {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+  font-size: 1.2em;
+  color: #ffcc00;
+}
+
+.rating-stars::before {
+  content: "★★★★★"; 
+  color: #d3d3d3;
+  display: inline-block;
+  position: relative;
+}
+
+.rating-stars span::after {
+  content: "★★★★☆";
+  color: #ffcc00;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 90%; 
+  overflow: hidden;
+}
+
+.movie-rating {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+  font-size: 1.2em;
+  color: #ffcc00;
+}
+
+.rating-stars {
+    position: relative;
+    font-size: 1.5em;
+    color: #d3d3d3; 
+    line-height: 1;
+}
+
+.stars-filled {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #ffcc00;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0%;
+}
+
+.stars-empty {
+    color: #d3d3d3;
+    z-index: -1;
+}
+
+@media (max-width: 768px) {
+  .navbar-menu {
+    gap: 10px;
+    font-size: 0.9em;
+  }
+
+  .movie-info h1 {
+    font-size: 1.8em;
+  }
+
+  .movie-description h2 {
+    font-size: 1.2em;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-logo a img {
+    width: 100px;
+  }
+
+  .login-button {
+    font-size: 0.9em;
+    padding: 6px 12px;
+  }
+
+  .movie-info h1 {
+    font-size: 1.5em;
+  }
+
+  .movie-description p {
+    font-size: 0.9em;
+  }
+}
+
+.login-button {
+  background-color: #f2f5ea;
+  color: #bb3a58;
+  font-weight: bold;
+}
+
+.login-button:hover {
+  background-color: #bb3a58;
+  color: #f2f5ea;
+}
+
+h2 {
+  padding-left: 5px;
+  text-align: center;
+}
+
+.reviews {
+  margin: 30px 0;
+}
+
+.reviews h2 , .movies-correlated h2, .movie-description h2{
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  color: #bb3a58;
+  text-align: left;
+}
+
+.review {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.user-img {
+  width: 50px; /* Specifica una larghezza fissa per l'immagine */
+  height: 50px; /* Assicura che l'area sia quadrata */
+  overflow: hidden; /* Nasconde le parti eccedenti */
+  border-radius: 50%; /* Rende l'immagine rotonda */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ddd; /* Colore di sfondo se l'immagine non viene caricata */
+  margin-right: 5px;
+}
+
+.user-review p {
+  margin: 0;
+}
+
+.all-reviews {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #bb3a58;
+  color: #f2f5ea;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.all-reviews:hover {
+  background-color: #f2f5ea;
+  color: #bb3a58;
+}
+
+.movies-carosello {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto; /* Consente lo scorrimento orizzontale */
+  gap: 20px;
+  padding: 20px;
+  scroll-behavior: smooth; /* Scorrimento fluido */
+}
+
+.movie-card {
+  background-color: #1c1c1c; /* Sfondo scuro */
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  width: 150px; /* Adattata per il layout */
+  text-align: center;
+  flex: 0 0 auto; 
+}
+
+.movie-card:hover {
+  transform: scale(1.05); /* Leggero ingrandimento */
+}
+
+.movie-thumbnail-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.movie-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.movie-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #2ecc71; /* Verde brillante */
+  color: #fff;
+  font-size: 0.8em;
+  padding: 5px 8px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.movie-info {
+  padding: 10px 5px;
+}
+
+.movie-title {
+  font-size: 1em; /* Testo principale */
+  margin: 5px 0;
+  color: #f2f5ea;
+  text-overflow: ellipsis; /* Per il testo lungo */
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.movie-duration {
+  font-size: 0.85em; /* Testo secondario */
+  color: #bb3a58;
+}
+
+.movies-carosello::-webkit-scrollbar {
+  display: none;
+}
+
+.carosello-container {
+  position: relative;
+}
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.carousel-button.left {
+  left: 10px;
+}
+
+.carousel-button.right {
+  right: 10px;
+}
+
+.carousel-button:hover {
+  background-color: #bb3a58;
+}

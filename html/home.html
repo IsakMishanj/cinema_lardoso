@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>CINEMA LARDO</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <a href="index.html">
+                <img class="logo-image" src="../img/logo-sito.png" alt="Logo" class="logo-image">
+            </a>
+        </div>
+        <ul class="navbar-menu">
+            <li><a class="active" href="home.html">Home</a></li>
+            <li><a  href="trending.html">Trending</a></li>
+        </ul>
+        <div class="navbar-buttons">
+            
+            <button class="login-button" onclick="window.location.href='login.html'">Login</button>
+        </div>
+    </nav>
+    <div class="filter-container">
+        <tr>
+            <td>   
+                <select id="genre" name="genre" placeholder="Genre">
+                    <option value="Genre">Genre</option>
+                    <option value="horror">Horror</option>
+                    <option value="action">Action</option>
+                    <option value="comedy">Comedy</option>
+                    <option value="thriller">Thriller</option>
+                    <option value="romance">Romance</option>
+                    <option value="fantasy">Fantasy</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <select id="country" name="country" placeholder="Country">
+                    <option value="country">Country</option>
+                    <option value="usa">USA</option>
+                    <option value="italia">Italy</option>
+                    <option value="germany">Germany</option>
+                    <option value="belgium">Belgium</option>
+                    <option value="finland">Finland</option>
+                    <option value="france">France</option>
+                </select>
+            </td>
+            </tr>
+            <tr>
+                <td>
+                    <select name="years" id="years">
+                        <option value="">Year</option>
+                        <!-- Anni dal 1945 al 2024 -->
+                        <script>
+                        for (let year = 2024; year >= 1945; year--) {
+                            document.write(`<option value="${year}">${year}</option>`);
+                        }
+                        </script>
+                    </select>
+                </td>
+            </tr>
+        <button class="filt" type="button" value="filter-button" id="button_filter">Filters</button>
+    </div>
+    <div class="moivies-area">
+        <h2>Il nostro catalogo:</h2>
+        <div class="movies-grid">
+        <!-- Le card sono qui -->
+    </div>
+    </div>
+    
+
+    
+    
+    <script src="../js/pages.js"></script>
+    
+</body>
+
+</html>

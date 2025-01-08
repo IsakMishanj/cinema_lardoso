@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>CINEMA LARDO</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <a href="#">SOAP2DAY</a>
+        </div>
+        <ul class="navbar-menu">
+            <li><a class="active" href="genre.html">Genre</a></li>
+            <li><a href="country.html">Country</a></li>
+            <!-- <li><a href="#">Movies</a></li>
+            <li><a href="#">TV Shows</a></li> -->
+            <li><a href="trending.html">Trending</a></li>
+            <!-- <li><a href="imdb.html">Top IMDB</a></li> -->
+        </ul>
+        <div class="navbar-buttons">
+            
+            <button class="login-button" onclick="window.location.href='login.html'">Login</button>
+        </div>
+            <!-- <button class="filter-button">Filter</button> -->
+    
+    </nav>
+    <nav>
+        
+    </nav>
+    <div class="filter-container">
+        <h2>Genre</h2>
+    
+        <tr>
+        <td>
+            
+            <select id="genre" name="genre" placeholder="Genre">
+                <option value="horror">Horror</option>
+                <option value="action">Action</option>
+                <option value="comedy">Comedy</option>
+                <option value="thriller">Thriller</option>
+                <option value="romance">Romance</option>
+                <option value="fantasy">Fantasy</option>
+            </select>
+            
+        </td>
+        </tr>
+        <tr>
+            <td>
+                
+                <select id="country" name="country" placeholder="Country">
+                    <option value="country">Country</option>
+                    <option value="usa">USA</option>
+                    <option value="italia">Italy</option>
+                    <option value="germany">Germany</option>
+                    <option value="belgium">Belgium</option>
+                    <option value="finland">Finland</option>
+                    <option value="france">France</option>
+                </select>
+                
+            </td>
+            </tr>
+            <tr>
+                <td>
+                    
+                    <select name="years" id="years">
+                        <option value="">Year</option>
+                        <!-- Anni dal 1945 al 2024 -->
+                        <script>
+                          for (let year = 2024; year >= 1945; year--) {
+                            document.write(`<option value="${year}">${year}</option>`);
+                          }
+                        </script>
+                      </select>
+                    
+                </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                        <select id="rating" name="rating" placeholder="Rating">
+                            <option value="horror">Horror</option>
+                            <option value="action">Action</option>
+                            <option value="comedy">Comedy</option>
+                            <option value="thriller">Thriller</option>
+                            <option value="romance">Romance</option>
+                            <option value="fantasy">Fantasy</option>
+                        </select>
+                        
+                    </td>
+                    </tr>
+                <tr>
+                        <td>
+                            
+                            <select id="genre" name="genre" placeholder="Genre">
+                                <option value="horror">Horror</option>
+                                <option value="action">Action</option>
+                                <option value="comedy">Comedy</option>
+                                <option value="thriller">Thriller</option>
+                                <option value="romance">Romance</option>
+                                <option value="fantasy">Fantasy</option>
+                            </select>
+                            
+                        </td>
+                </tr>
+                <tr>
+                        <td>
+                            
+                            <select id="genre" name="genre" placeholder="Genre">
+                                <option value="horror">Horror</option>
+                                <option value="action">Action</option>
+                                <option value="comedy">Comedy</option>
+                                <option value="thriller">Thriller</option>
+                                <option value="romance">Romance</option>
+                                <option value="fantasy">Fantasy</option>
+                            </select>
+                            
+                        </td>
+                </tr>
+                
+         <button class="filt" type="button" value="filter-button" id="button_filter">Filter</button>
+ 
+    </div>
+    <div class="movies-grid">
+        <!-- Singola Card -->
+        <div class="movie-card" onclick="openReviewPopup('Jojo Rabbit')">
+            <div class="movie-thumbnail-container">
+                <img src="img/imgF/jojoR.jpg" alt="Jojo Rabbit" class="movie-thumbnail">
+                <span class="movie-badge">HD</span>
+            </div>
+            <div class="movie-info">
+                <h3 class="movie-title">Jojo Rabbit</h3>
+                <p class="movie-duration">2019 - 148 min</p>
+            </div>
+        </div>
+        
+        <div class="movie-card" onclick="openReviewPopup('Sharknado')">
+            <div class="movie-thumbnail-container">
+                <img src="img/imgF/sharknado.jpg" alt="SharknadoJojo Rabbit" class="movie-thumbnail">
+                <span class="movie-badge">HD</span>
+            </div>
+            <div class="movie-info">
+                <h3 class="movie-title">Sharknado</h3>
+                <p class="movie-duration">2013 - 83 min</p>
+            </div>
+        </div>
+        <div class="movie-card" onclick="openReviewPopup('Jojo Rabbit')">
+            <div class="movie-thumbnail-container">
+                <img src="img/imgF/jojoR.jpg" alt="Jojo Rabbit" class="movie-thumbnail">
+                <span class="movie-badge">HD</span>
+            </div>
+            <div class="movie-info">
+                <h3 class="movie-title">Jojo Rabbit</h3>
+                <p class="movie-duration">2019 - 148 min</p>
+            </div>
+        </div>
+        
+        <div class="movie-card" onclick="openReviewPopup('Sharknado')">
+            <div class="movie-thumbnail-container">
+                <img src="img/imgF/sharknado.jpg" alt="SharknadoJojo Rabbit" class="movie-thumbnail">
+                <span class="movie-badge">HD</span>
+            </div>
+            <div class="movie-info">
+                <h3 class="movie-title">Sharknado</h3>
+                <p class="movie-duration">2013 - 83 min</p>
+            </div>
+        </div> <div class="movie-card" onclick="openReviewPopup('Jojo Rabbit')">
+            <div class="movie-thumbnail-container">
+                <img src="img/imgF/jojoR.jpg" alt="Jojo Rabbit" class="movie-thumbnail">
+                <span class="movie-badge">HD</span>
+            </div>
+            <div class="movie-info">
+                <h3 class="movie-title">Jojo Rabbit</h3>
+                <p class="movie-duration">2019 - 148 min</p>
+            </div>
+        </div>
+        
+        <div class="movie-card" onclick="openReviewPopup('Sharknado')">
+            <div class="movie-thumbnail-container">
+                <img src="img/imgF/sharknado.jpg" alt="SharknadoJojo Rabbit" class="movie-thumbnail">
+                <span class="movie-badge">HD</span>
+            </div>
+            <div class="movie-info">
+                <h3 class="movie-title">Sharknado</h3>
+                <p class="movie-duration">2013 - 83 min</p>
+            </div>
+        </div> <div class="movie-card" onclick="openReviewPopup('Jojo Rabbit')">
+            <div class="movie-thumbnail-container">
+                <img src="img/imgF/jojoR.jpg" alt="Jojo Rabbit" class="movie-thumbnail">
+                <span class="movie-badge">HD</span>
+            </div>
+            <div class="movie-info">
+                <h3 class="movie-title">Jojo Rabbit</h3>
+                <p class="movie-duration">2019 - 148 min</p>
+            </div>
+        </div>
+        
+        <div class="movie-card" onclick="openReviewPopup('Sharknado')">
+            <div class="movie-thumbnail-container">
+                <img src="img/imgF/sharknado.jpg" alt="SharknadoJojo Rabbit" class="movie-thumbnail">
+                <span class="movie-badge">HD</span>
+            </div>
+            <div class="movie-info">
+                <h3 class="movie-title">Sharknado</h3>
+                <p class="movie-duration">2013 - 83 min</p>
+            </div>
+        </div> <div class="movie-card" onclick="openReviewPopup('Jojo Rabbit')">
+            <div class="movie-thumbnail-container">
+                <img src="img/imgF/jojoR.jpg" alt="Jojo Rabbit" class="movie-thumbnail">
+                <span class="movie-badge">HD</span>
+            </div>
+            <div class="movie-info">
+                <h3 class="movie-title">Jojo Rabbit</h3>
+                <p class="movie-duration">2019 - 148 min</p>
+            </div>
+        </div>
+        
+        <div class="movie-card" onclick="openReviewPopup('Sharknado')">
+            <div class="movie-thumbnail-container">
+                <img src="img/imgF/sharknado.jpg" alt="SharknadoJojo Rabbit" class="movie-thumbnail">
+                <span class="movie-badge">HD</span>
+            </div>
+            <div class="movie-info">
+                <h3 class="movie-title">Sharknado</h3>
+                <p class="movie-duration">2013 - 83 min</p>
+            </div>
+        </div> <div class="movie-card" onclick="openReviewPopup('Jojo Rabbit')">
+            <div class="movie-thumbnail-container">
+                <img src="img/imgF/jojoR.jpg" alt="Jojo Rabbit" class="movie-thumbnail">
+                <span class="movie-badge">HD</span>
+            </div>
+            <div class="movie-info">
+                <h3 class="movie-title">Jojo Rabbit</h3>
+                <p class="movie-duration">2019 - 148 min</p>
+            </div>
+        </div>
+        
+        <div class="movie-card" onclick="openReviewPopup('Sharknado')">
+            <div class="movie-thumbnail-container">
+                <img src="img/imgF/sharknado.jpg" alt="SharknadoJojo Rabbit" class="movie-thumbnail">
+                <span class="movie-badge">HD</span>
+            </div>
+            <div class="movie-info">
+                <h3 class="movie-title">Sharknado</h3>
+                <p class="movie-duration">2013 - 83 min</p>
+            </div>
+        </div>
+        <!-- Aggiungi altre card qui -->
+    </div>
+    
+    
+    
+</body>
+</html>
