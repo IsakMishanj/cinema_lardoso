@@ -21,6 +21,8 @@ document.querySelector('.back-button').addEventListener('click', () => {
   });
 
 
+
+
   function scrollCarousel(direction) {
     const carousel = document.querySelector(".movies-carosello");
     const scrollAmount = 300; // Quantità di scorrimento (in pixel)
@@ -29,7 +31,11 @@ document.querySelector('.back-button').addEventListener('click', () => {
       behavior: "smooth"
     });
   }
-
+  document.addEventListener("DOMContentLoaded", () => {
+    const params = new URLSearchParams(window.location.search);
+    const movieId = params.get("id");
+    caricaRecensioni(movieId);
+  });
 
   document.addEventListener("DOMContentLoaded", () => {
     const params = new URLSearchParams(window.location.search);
@@ -56,6 +62,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Estrarre l'ID del film dalla query string
   const params = new URLSearchParams(window.location.search);
   const movieId = params.get("ID");
+  // const dataUscita = film.dataUscita;
+  // const anno = dataUscita ? new Date(dataUscita).getUTCFullYear() : "Anno non disponibile";
+
 
   if (!movieId) {
       console.error("ID del film non trovato!");
@@ -70,7 +79,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       // Popolare i dettagli nella pagina
       document.getElementById("movie-title").textContent = film.titolo_f || "Titolo non disponibile";
-      document.getElementById("movie-year").textContent = film.data_uscita || "Anno non disponibile";
+      document.getElementById("movie-year").textContent = film.dataUscita || "Anno non disponibile";
       document.getElementById("movie-genre").textContent = film.generi ? film.generi.join(", ") : "Genere non disponibile";
       document.getElementById("movie-direction").textContent = film.regista || "Regista non disponibile";
       document.getElementById("movie-cast").textContent = film.castf || "Cast non disponibile";
@@ -108,3 +117,99 @@ function renderRating(rating) {
 function goBack() {
   window.history.back();
 }
+
+
+// async function caricaRecensioni(movieId) {
+//   const recensioniContainer = document.querySelector(".reviews");
+//   recensioniContainer.innerHTML = `<h2>Recensioni:</h2>`;
+  
+//   try {
+//     const response = await fetch(`/recensioni/${movieId}`); 
+//     if (!response.ok) throw new Error("Errore nel caricamento delle recensioni");
+    
+//     const recensioniFilm = await response.json();
+    
+//     if (recensioniFilm.length === 0) {
+//       recensioniContainer.innerHTML += `<p>Nessuna recensione disponibile per questo film.</p>`;
+//       return;
+//     }
+
+//     recensioniFilm.forEach(recensione => {
+//       const reviewElement = document.createElement("div");
+//       reviewElement.classList.add("review");
+
+//       reviewElement.innerHTML = `
+//         <div class="user-img">
+//           <img src="../img/imgU/user-icon.jpg" alt="img-user">
+//         </div>
+//         <div class="user-review">
+//           <p><strong>${recensione.utente}</strong></p>
+//           <p>${recensione.testo}</p>
+//           <p>Valutazione: ${recensione.valutazione}/5</p>
+//           <p>Data: ${new Date(recensione.data_r).toLocaleDateString()}</p>
+//         </div>
+//       `;
+
+//       recensioniContainer.appendChild(reviewElement);
+//     });
+
+//     recensioniContainer.innerHTML += `
+//       <button class="all-reviews" onclick="mostraTutteRecensioni('${movieId}')">TUTTE LE RECENSIONI</button>
+//     `;
+
+//   } catch (error) {
+//     console.error("Errore:", error);
+//     recensioniContainer.innerHTML += `<p>Errore nel caricamento delle recensioni.</p>`;
+//   }
+// }
+
+async function caricaRecensioni(movieId) {
+  const recensioniContainer = document.querySelector(".reviews");
+  recensioniContainer.innerHTML = `<h2>Recensioni:</h2>`;
+  
+  try {
+    console.log(`Inizio caricamento recensioni per movieId: ${movieId}`);
+    const response = await fetch(`/recensioni/${movieId}`); // Modifica l'endpoint in base alla tua API
+    console.log(`Risposta ricevuta: `, response);
+
+    if (!response.ok) {
+      throw new Error(`Errore nel caricamento delle recensioni: ${response.status}`);
+    }
+    
+    const recensioniFilm = await response.json();
+    console.log(`Recensioni caricate: `, recensioniFilm);
+
+    if (recensioniFilm.length === 0) {
+      recensioniContainer.innerHTML += `<p>Nessuna recensione disponibile per questo film.</p>`;
+      return;
+    }
+
+    recensioniFilm.forEach(recensione => {
+      const reviewElement = document.createElement("div");
+      reviewElement.classList.add("review");
+
+      reviewElement.innerHTML = `
+        <div class="user-img">
+          <img src="../img/imgU/user-icon.jpg" alt="img-user">
+        </div>
+        <div class="user-review">
+          <p><strong>${recensione.utente}</strong></p>
+          <p>${recensione.testo}</p>
+          <p>Valutazione: ${recensione.valutazione}/5</p>
+          <p>Data: ${new Date(recensione.data_r).toLocaleDateString()}</p>
+        </div>
+      `;
+
+      recensioniContainer.appendChild(reviewElement);
+    });
+
+    recensioniContainer.innerHTML += `
+      <button class="all-reviews" onclick="mostraTutteRecensioni('${movieId}')">TUTTE LE RECENSIONI</button>
+    `;
+
+  } catch (error) {
+    console.error("Errore:", error);
+    recensioniContainer.innerHTML += `<p>Errore nel caricamento delle recensioni.</p>`;
+  }
+}
+

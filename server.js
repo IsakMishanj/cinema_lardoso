@@ -90,5 +90,27 @@ app.listen(port, () => {
     }
 });
 
+app.get("/recensioni/:movieId", (req, res) => {
+  const { movieId } = req.params;
+
+  // Filtra le recensioni basandosi sull'ID del film
+  const recensioniFilm = recensioni.filter((recensione) => recensione.filmId === movieId);
+
+  // Restituisce le recensioni come JSON
+  res.json(recensioniFilm);
+});
+
+app.get("/recensioni/:movieId", (req, res) => {
+  const { movieId } = req.params;
+  console.log(`Richiesta ricevuta per recensioni del film con ID: ${movieId}`);
+
+  const recensioniFilm = recensioni.filter((recensione) => recensione.filmId === movieId);
+
+  res.json(recensioniFilm);
+});
+
+
   // SELECT * FROM film JOIN film_genere ON film.idf = film_genere.idf JOIN genere ON film_genere.idg = genere.idg; 
   // SELECT film.idf, film.titolo, film.durata, ARRAY_AGG(DISTINCT genere.nome) AS generiFROM filmJOIN film_genere ON film.idf = film_genere.idfJOIN genere ON film_genere.idg = genere.idgGROUP BY film.idf, film.titolo, film.durata;
+
+
