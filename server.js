@@ -14,6 +14,23 @@ app.get("/", (req, res) => {
 // Configura CORS
 app.use(cors());
 
+pool.connect()
+  .then(client => {
+    console.log('Connessione al database riuscita');
+    client.release(); // Rilascia il client quando la connessione è riuscita
+  })
+  .catch(err => {
+    console.error('Errore di connessione al database:', err);
+  });
+
+pool.query('SELECT NOW()', (err, res) => {
+  if (err) {
+    console.error('Errore nella connessione al database', err);
+  } else {
+    console.log('Connessione al database riuscita', res.rows);
+  }
+});
+
 app.get("/movieDetails.html", (req, res) => {
   res.sendFile(path.join(__dirname, "html", "movieDetails.html"));
 });
@@ -24,18 +41,6 @@ app.use("/js", express.static(path.join(__dirname, "js")));
 app.use("/img", express.static(path.join(__dirname, "img")));
 app.use(express.json());
 
-// app.get("/genere", async (req, res) => {
-//   try {
-//     const { rows } = await pool.query("SELECT * FROM genere");
-//     res.json(rows);
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).send("Errore del server");
-//   }
-// });
-
-
-//per carcare dal db
 app.get("/film", async (req, res) => {
   try {
     const { rows } = await pool.query(`
@@ -50,15 +55,6 @@ app.get("/film", async (req, res) => {
     res.status(500).send("Errore del server");
   }
 });
-
-
-
-
-
-//sempre in fondo
-app.listen(port, () => {
-    console.log(`Server avviato su http://localhost:${port}`);
-  });
   
 
 
@@ -90,23 +86,50 @@ app.listen(port, () => {
     }
 });
 
-app.get("/recensioni/:movieId", (req, res) => {
-  const { movieId } = req.params;
-
-  // Filtra le recensioni basandosi sull'ID del film
-  const recensioniFilm = recensioni.filter((recensione) => recensione.filmId === movieId);
-
-  // Restituisce le recensioni come JSON
-  res.json(recensioniFilm);
-});
-
-app.get("/recensioni/:movieId", (req, res) => {
+app.get("/recensioni/:movieId", async (req, res) => {
   const { movieId } = req.params;
   console.log(`Richiesta ricevuta per recensioni del film con ID: ${movieId}`);
 
-  const recensioniFilm = recensioni.filter((recensione) => recensione.filmId === movieId);
+  try {
+    // Esegui la query per ottenere le recensioni dal database
+    const result = await pool.query(
+      `SELECT 
+          r.idR, 
+          r.titolo_r AS titolo_recensione,
+          r.testo,
+          r.valutazione,
+          r.data_r,
+          u.nome_utente,
+          f.titolo_f AS titolo_film,
+          f.regista,
+          f.data_uscita,
+          f.paese,
+          f.durata
+       FROM 
+          Recensione r
+       JOIN 
+          Utente u ON r.idU = u.idU
+       JOIN 
+          Film f ON r.idF = f.idF
+       WHERE 
+          r.idF = $1
+       ORDER BY 
+          r.data_r DESC`,
+      [movieId] // Passiamo movieId come parametro alla query
+    );
 
-  res.json(recensioniFilm);
+    // Se non ci sono recensioni per il film
+    if (result.rows.length === 0) {
+      return res.status(404).json({ message: "Nessuna recensione disponibile per questo film." });
+    }
+
+    // Restituisci le recensioni in formato JSON
+    res.json(result.rows);
+  } catch (error) {
+    console.error("Errore nella query:", error);
+    // Gestione degli errori
+    res.status(500).json({ message: "Errore interno del server. Riprovare più tardi." });
+  }
 });
 
 
@@ -114,3 +137,37 @@ app.get("/recensioni/:movieId", (req, res) => {
   // SELECT film.idf, film.titolo, film.durata, ARRAY_AGG(DISTINCT genere.nome) AS generiFROM filmJOIN film_genere ON film.idf = film_genere.idfJOIN genere ON film_genere.idg = genere.idgGROUP BY film.idf, film.titolo, film.durata;
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //sempre in fondo
+app.listen(port, () => {
+  console.log(`Server avviato su http://localhost:${port}`);
+});

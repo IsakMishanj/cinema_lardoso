@@ -411,3 +411,135 @@ h2 {
 .carousel-button:hover {
   background-color: #bb3a58;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Contenitore principale della recensione */
+.review {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: row; /* Disposizione orizzontale */
+  gap: 20px; /* Spaziatura tra gli elementi */
+}
+
+.review:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Header della recensione (dati utente e data) */
+.review-header {
+  display: flex;
+  align-items: flex-start; /* Allineamento in alto */
+  gap: 10px; /* Spaziatura tra l'immagine e le informazioni */
+}
+
+.user-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.user-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.review-info {
+  flex-grow: 1;
+}
+
+.review-author {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.review-date {
+  font-size: 14px;
+  color: #888;
+}
+
+/* Contenuto della recensione */
+.review-content {
+  flex-grow: 2; /* Il contenuto occupa più spazio */
+  font-size: 16px;
+  color: #444;
+  line-height: 1.6;
+  white-space: pre-wrap; /* Gestisce le linee lunghe */
+  word-wrap: break-word;
+}
+
+/* Footer della recensione (rating e bottone segnala) */
+.review-footer {
+  display: flex;
+  flex-direction: column; /* Disposizione verticale per rating e bottone */
+  gap: 10px; /* Distanza tra la valutazione e il pulsante */
+}
+
+.review-rating {
+  font-size: 14px;
+  font-weight: bold;
+  color: #f39c12;
+}
+
+.report-button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.report-button:hover {
+  background-color: #c0392b;
+}
+
+.report-button:focus {
+  outline: none;
+}
+
+/* Rende le recensioni responsivi su schermi più piccoli */
+@media (max-width: 768px) {
+  .review {
+    flex-direction: column; /* Passa alla colonna su dispositivi mobili */
+    padding: 10px;
+  }
+
+  .review-header {
+    flex-direction: column; /* Orienta l'header in colonna su mobile */
+    align-items: flex-start;
+  }
+
+  .review-footer {
+    flex-direction: row; /* Mantieni il footer orizzontale */
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+.review-rating {
+  font-weight: bold;
+  font-size: 16px;
+}
+
