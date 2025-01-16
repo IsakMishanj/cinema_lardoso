@@ -1,5 +1,6 @@
 /* Stile per il contenitore principale */
 
+
 body {
   margin: 0;
   font-family:  'Exo','Montserrat','Open Sans', 'Arial Narrow Bold', sans-serif, sans-serif;
@@ -88,7 +89,7 @@ body {
   margin: 20px auto;
   padding: 20px;
   background-color: #1a1a1a;
-  border-radius: 8px;
+  border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -101,8 +102,8 @@ body {
 
 
 #movie-poster {
-  width: 200px;
-  border-radius: 8px;
+  width: 325px;
+  border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -112,13 +113,13 @@ body {
 }
 
 .movie-info h1 {
-  margin: 0;
-  font-size: 2em;
+  font-size: 28px;
+  margin-bottom: 10px;
   color: #bb3a58;
 }
 
 .movie-info p {
-  margin: 5px 0;
+  margin-bottom: 10px;
   font-size: 1em;
 }
 
@@ -153,63 +154,6 @@ body {
 .navbar a.active {
   color: #bb3a58;
   font-weight: bold;
-}
-
-.movie-rating {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 10px 0;
-  font-size: 1.2em;
-  color: #ffcc00;
-}
-
-.rating-stars::before {
-  content: "★★★★★"; 
-  color: #d3d3d3;
-  display: inline-block;
-  position: relative;
-}
-
-.rating-stars span::after {
-  content: "★★★★☆";
-  color: #ffcc00;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 90%; 
-  overflow: hidden;
-}
-
-.movie-rating {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 10px 0;
-  font-size: 1.2em;
-  color: #ffcc00;
-}
-
-.rating-stars {
-    position: relative;
-    font-size: 1.5em;
-    color: #d3d3d3; 
-    line-height: 1;
-}
-
-.stars-filled {
-    position: absolute;
-    top: 0;
-    left: 0;
-    color: #ffcc00;
-    overflow: hidden;
-    white-space: nowrap;
-    width: 0%;
-}
-
-.stars-empty {
-    color: #d3d3d3;
-    z-index: -1;
 }
 
 @media (max-width: 768px) {
@@ -427,7 +371,7 @@ h2 {
 
 /* Contenitore principale della recensione */
 .review {
-  background-color: #f9f9f9;
+  background-color: #2a343c;
   border-radius: 8px;
   padding: 15px;
   margin-bottom: 20px;
@@ -469,7 +413,7 @@ h2 {
 .review-author {
   font-size: 16px;
   font-weight: bold;
-  color: #333;
+  color: #fff;
   margin-bottom: 5px;
 }
 
@@ -482,7 +426,7 @@ h2 {
 .review-content {
   flex-grow: 2; /* Il contenuto occupa più spazio */
   font-size: 16px;
-  color: #444;
+  color: #fff;
   line-height: 1.6;
   white-space: pre-wrap; /* Gestisce le linee lunghe */
   word-wrap: break-word;
@@ -502,8 +446,8 @@ h2 {
 }
 
 .report-button {
-  background-color: #e74c3c;
-  color: white;
+  background-color: #bb3a58;
+  color: #f2f5ea;
   border: none;
   padding: 6px 12px;
   font-size: 14px;
@@ -513,7 +457,8 @@ h2 {
 }
 
 .report-button:hover {
-  background-color: #c0392b;
+background-color: #f2f5ea;
+  color: #bb3a58;
 }
 
 .report-button:focus {
@@ -543,3 +488,36 @@ h2 {
   font-size: 16px;
 }
 
+
+
+
+.rating-container {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.circle {
+  stroke-dasharray: 283;
+  stroke-dashoffset: 283;
+  stroke-width: 8;
+  fill: none;
+  transform: rotate(-90deg);
+  transform-origin: center;
+  transition: stroke-dashoffset 1s ease-in-out, stroke 0.5s ease-in-out;
+}
+
+.background-circle {
+  stroke: #333;
+  stroke-width: 8;
+  fill: none;
+}
+
+.rating-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  font-weight: bold;
+} 

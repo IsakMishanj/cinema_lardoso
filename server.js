@@ -11,6 +11,7 @@ const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "html", "home.html"));
 });
+
 // Configura CORS
 app.use(cors());
 
@@ -108,9 +109,9 @@ app.get("/recensioni/:movieId", async (req, res) => {
        FROM 
           Recensione r
        JOIN 
-          Utente u ON r.idU = u.idU
+          Utente u ON r.idu = u.idu
        JOIN 
-          Film f ON r.idF = f.idF
+          Film f ON r.idf = f.idf
        WHERE 
           r.idF = $1
        ORDER BY 
