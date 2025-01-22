@@ -5,7 +5,7 @@ const path = require("path");
 require("dotenv").config();
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 app.get("/", (req, res) => {
@@ -96,7 +96,7 @@ app.get("/recensioni/:movieId", async (req, res) => {
     const result = await pool.query(
       `SELECT 
           r.idR, 
-          r.titolo_r AS titolo_recensione,
+          r.titolo_r,
           r.testo,
           r.valutazione,
           r.data_r,
@@ -142,10 +142,33 @@ app.get("/recensioni/:movieId", async (req, res) => {
 
 
 
-
-
-
-
+  app.get("/api/related-movies", async (req, res) => {
+    const movieId = parseInt(req.query.idF, 10);
+    if (!movieId) {
+      return res.status(400).json({ error: "ID film non fornito" });
+    }
+  
+    try {
+      const query = `
+        SELECT DISTINCT f.idF, f.titolo_f, f.regista, 
+               ARRAY_AGG(g.nome_g) AS generi
+        FROM Film f
+        JOIN Film_Genere fg ON f.idF = fg.idF
+        JOIN Genere g ON fg.idG = g.idG
+        WHERE f.idF != $1
+          AND (f.regista = (SELECT regista FROM Film WHERE idF = $1)
+               OR fg.idG IN (
+                   SELECT idG FROM Film_Genere WHERE idF = $1
+               ))
+        GROUP BY f.idF, f.titolo_f, f.regista;
+      `;
+      const result = await pool.query(query, [movieId]);
+      res.json(result.rows);
+    } catch (error) {
+      console.error("Errore nel recupero dei film correlati:", error);
+      res.status(500).json({ error: "Errore interno del server" });
+    }
+  }); 
 
 
 

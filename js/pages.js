@@ -14,6 +14,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       // const responseG = await fetch("/genere");
       // const genere = await responseG.json();
       // Aggiungi ogni servizio come card
+      
+
       film.forEach((film) => {
         const card = document.createElement("div");
         card.className = "card";
@@ -21,12 +23,13 @@ document.addEventListener("DOMContentLoaded", async () => {
           // Cambia l'URL con il percorso della pagina di dettaglio del film
           window.location.href = `movieDetails.html?ID=${film.idf}`;
       };
-  
+        let data = new Date(film.data_uscita).getFullYear();
+
         card.innerHTML = `
           <div class="card-img" style="background-image: url('${film.locandina}');"></div>
           <div class="card-info">
             <p class="text-title">${film.titolo_f}</p>
-            <p class="text-body">${film.nome_g}-${film.data_uscita}-${film.durata}</p>
+            <p class="text-body">${film.nome_g} - ${data} - ${film.durata} min</p>
             
           </div>
           <div class="card-footer">
