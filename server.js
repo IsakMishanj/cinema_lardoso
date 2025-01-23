@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const { Pool } = require("pg");
 const path = require("path");
-require("dotenv").config();
+require("dotenv").config(); 
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -18,7 +18,7 @@ app.use(cors());
 pool.connect()
   .then(client => {
     console.log('Connessione al database riuscita');
-    client.release(); // Rilascia il client quando la connessione è riuscita
+    client.release(); // Rilascia il client quando la connessione è riuscitad
   })
   .catch(err => {
     console.error('Errore di connessione al database:', err);
