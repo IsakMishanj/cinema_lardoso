@@ -1,0 +1,459 @@
+/* Stili CSS */
+body {
+  margin: 0;
+  font-family:  'Exo','Montserrat','Open Sans', 'Arial Narrow Bold', sans-serif, sans-serif;
+  background-color: #2a343c; /* Sfondo scuro */
+  color: #fff;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  background-color: #1a1a1a;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: #bb3a58 solid 1px;
+}
+  
+.navbar-buttons {
+  margin-left: auto;
+  display: flex;
+  gap: 10px;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+  
+.navbar-logo a {
+  color: #bb3a58;
+  text-decoration: none;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.navbar-logo a img {
+  width: 120px; /* Adattabile */
+  max-width: 100%;
+}
+  
+.navbar-menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-grow: 1; /* Occupa lo spazio disponibile tra il logo e il login */
+  justify-content: flex-start; /* Allinea gli elementi a sinistra */
+  gap: 20px; /* Spazio tra gli elementi del menu */
+}
+
+.navbar-menu li {
+  margin: 0 15px;
+}
+  
+.navbar-menu a {
+  color: #f2f5ea;
+  text-decoration: none;
+  font-size: 1em;
+}
+  
+.navbar-menu a:hover {
+  color: #bb3a58;
+}
+
+.navbar-filter {
+  margin-left: auto; /* Sposta il pulsante di filtro completamente a destra */
+}
+
+.navbar-filter .filter-button {
+  background-color: #bb3a58;
+  border: none;
+  color: #2a343c;
+  padding: 8px 15px;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.navbar-filter .filter-button:hover {
+  background-color: #bb3a58;
+  color: #f2f5ea;
+}
+
+li a.active {
+  color: #bb3a58;
+}
+
+.navbar-buttons {
+  margin-left: auto; /* Sposta i pulsanti all'estrema destra */
+  display: flex;
+  gap: 10px; /* Spazio tra i pulsanti */
+}
+
+.filter-button,
+.login-button {
+  padding: 8px 15px;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.filt {
+  background-color: #bb3a58;
+  color: #000;
+}
+
+.login-button {
+  background-color: #f2f5ea;
+  color: #bb3a58;
+  font-weight: bold;
+}
+
+.login-button:hover {
+  background-color: #bb3a58;
+  color: #f2f5ea;
+}
+button.filt:hover {
+  background-color: #f2f5ea;
+  color: #2a9626;
+  transform: scale(1.05); /* Slightly enlarging the button */
+}
+
+select {
+  background-color: #2a343c;
+  border: #bb3a58 solid 2px;
+  border-radius: 5px;
+  padding: 10px 15px;
+  color: #f2f5ea;
+  width: 200px; /* Stessa larghezza per tutte */
+  text-align: left; /* Allinea il testo a sinistra */
+  font-size: 1em; /* Dimensione uniforme del testo */
+  appearance: none; /* Rimuove gli stili di default del browser */
+}
+select:hover {
+  background-color: #bb3a58;
+  color: #f2f5ea;
+  border: #2a343c solid 2px;
+}
+select option {
+  text-align: left;
+}
+
+.filter-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  position: relative;
+  padding-bottom: 10px;
+  background-color: #2a343c;
+  margin-bottom: 20px; /* Spaziatura esterna */
+  overflow: hidden; /* Per contenere gli effetti */
+  color: white; /* Colore del testo */
+  border-top: #bb3a58 solid 1px;
+  padding-left: 30px;
+  padding-top: 5px;      
+}
+
+h2 {
+  padding-left: 5px;
+  text-align: center; /* Centrare il titolo */
+}
+
+button.filt {
+  padding: 10px 20px;
+  width: 200px;
+  background-color: #bb3a58;
+  border: none;
+  color: #f2f5ea;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  float: right;
+}
+
+button.filt:hover {
+  background-color: #f2f5ea;
+  color: #bb3a58;
+}
+
+.movies-grid {
+  margin-left: 100px;
+  margin-right: 100px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adatta il numero di colonne */
+  gap: 170px; /* Spazio tra le card */
+  padding: 20px;
+  justify-items: center;
+}
+
+@media (max-width: 768px) {
+  .movies-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Adatta per schermi piccoli */
+  }
+  .movie-card {
+    width: 120px; /* Riduce la larghezza per schermi piccoli */
+  }
+}
+
+.movie-card {
+  position: relative;
+  overflow: hidden;
+  width: 300px;
+  height: 450px; /* Dimensione della card */
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.movie-card:hover {
+  transform: scale(1.05); /* Leggero ingrandimento */
+}
+
+.movie-thumbnail-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.movie-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.movie-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #2ecc71; /* Verde brillante */
+  color: #fff;
+  font-size: 0.8em;
+  padding: 5px 8px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.movie-info {
+  padding: 10px 5px;
+}
+
+.movie-title {
+  font-size: 1em; /* Testo principale */
+  margin: 5px 0;
+  color: #f2f5ea;
+  text-overflow: ellipsis; /* Per il testo lungo */
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.movie-duration {
+  font-size: 0.85em; /* Testo secondario */
+  color: #bb3a58;
+}
+
+.logo-image {
+  height: 60px; /* Altezza del logo */
+  width: auto; /* Mantiene le proporzioni */
+  display: block;
+}
+
+.moivies-area h2 {
+  text-align: left;
+  padding-left: 80px;
+}
+
+.search-bar {
+    padding-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Spaziatura tra input e bottone */
+    margin-bottom: 20px; /* Spaziatura inferiore */
+    padding: auto;
+
+    right: 50px; /* Distanza dal lato destro */
+    position: absolute; /* Posizionamento assoluto */
+    z-index: 100; /* Per assicurarci che stia sopra altri elementi */
+}
+
+#search-input {
+    flex: 1;
+    padding: 3.15%;
+    border: 2px solid #BB3A58; /* Colore neon */
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    background-color: #2a343c; /* Sfondo scuro */
+    color: white;
+}
+
+#search-input::placeholder {
+    color: #f2f5ea;
+    font-size: large;
+}
+
+.search-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #BB3A58; /* Colore neon */
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.search-button:hover {
+  background-color: #d14d6e; /* Colore più chiaro al passaggio del mouse */
+}
+
+.card {
+  width: 300px;
+  height: 400px;
+  padding: 0.8em;
+  background: #1c1c1c;
+  position: relative;
+  overflow: hidden; /* Cambiato per limitare l'overflow */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+ border-radius: 0.5rem; /* Migliore estetica */
+}
+  
+  .card-img {
+    position: relative;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.3s ease-in-out;
+  }
+  
+  .card-info {
+    position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  color: #fff;
+  text-align: left;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  }
+  
+  .card:hover .card-img {
+    transform: scale(1.1); /* Zoom sulla locandina */
+    opacity: 0.5; /* Aggiunge un effetto sfumato */
+  }
+  
+  .card:hover .card-info {
+    transform: translateY(0); /* Mostra i dettagli */
+    opacity: 1; /* Rende visibili i dettagli */
+  }
+  
+  .card-footer {
+    margin-top: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #a32d2d;
+    padding-top: 0.5em;
+  }
+
+  .movie-card:hover .card-img {
+    transform: scale(1.2); /* Zoom dell'immagine */
+    filter: blur(4px); /* Sfocatura dell'immagine */
+  }
+  .movie-card:hover .card-info {
+    opacity: 1; /* Mostra i dettagli al passaggio del mouse */
+  }
+  .text-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #f2f5ea;
+    margin: 5px 0;
+  }
+  
+  .text-body {
+    font-size: 0.9em;
+    color: #bb3a58;
+  }
+  .card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.8) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  .movie-card:hover .card-overlay {
+    opacity: 1; /* Mostra la sfumatura al passaggio del mouse */
+  }
+
+  #search {
+    color: white;
+    background-color: #2a343c;
+    width: 17%; /* Occupa tutta la larghezza del contenitore */
+    padding: 10px 15px; /* Spaziatura interna */
+    font-size: 16px; /* Dimensione del font */
+    border: 2px solid #BB3A58; /* Bordo sottile grigio */
+    border-radius: 5px; /* Angoli arrotondati */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1); /* Effetto ombra interna */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transizioni per hover e focus */
+}
+
+/* Effetto quando l'elemento è in focus */
+#search:focus {
+    border-color: #BB3A58; /* Colore del bordo in focus */
+    box-shadow: 0 0 5px rgba(255, 0, 72, 0.5); /* Aggiunge un'ombra colorata */
+    outline: none; /* Rimuove il bordo esterno */
+}
+
+/* Placeholder personalizzato */
+#search::placeholder {
+    color: white; /* Colore del testo del placeholder */
+    text-align: left; /* Allinea il testo a sinistra */
+    font-size: 1em; /* Stile del testo del placeholder */
+}
+
+
+
+
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.username {
+  font-weight: bold;
+  color: white;
+}
+
+.logout-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}

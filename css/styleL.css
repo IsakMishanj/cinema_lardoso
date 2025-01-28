@@ -1,0 +1,166 @@
+/* Base styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #2a343c;
+  }
+  
+  .buttonHouse
+  {
+    position: fixed;
+    right: 590px;
+    top: 310px;
+    cursor: pointer;
+    font-size: 20px;
+  }
+
+  .buttonHouse:hover
+  {
+    color:#bb3a58;
+
+  }
+
+  /* Container */
+  .container {
+    
+    display: flex;
+    width: 800px;
+    background: #f2f5ea;
+    border-radius: 10px;
+    overflow: hidden;
+    
+    box-shadow: 0 4px 20px #BB3A58;
+  }
+  
+  /* Sign In Section */
+  .signin{
+    flex: 1;
+    padding: 40px;
+    text-align: center;
+  }
+
+  .signup
+  {
+    flex: 1;
+    padding: 40px;
+    text-align: center;
+    padding-top: 15%;
+  }
+  
+  .signin {
+    background: #f2f5ea;
+    
+  }
+  
+  .signup {
+    background: #bb3a58;
+    color: #f2f5ea;
+  }
+  
+  /* Social buttons */
+  .social-buttons {
+    margin-bottom: 20px;
+  }
+  
+  .social-btn {
+    border: none;
+    margin: 5px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #bb3a58;
+    cursor: pointer;
+    font-weight: bold;
+    color: #1F271B;
+    transition: all 0.3s ease;
+  }
+  
+  .social-btn:hover {
+    background: #f2f5ea;
+    border-color: #bb3a58;
+    color: white;
+  }
+  
+  /* Form inputs */
+  form input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Buttons */
+  .btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+  }
+  
+  /* Sign In button */
+  .signin-btn {
+    background: #bb3a58;
+    color: #f2f5ea;
+  }
+  
+  .signin-btn:hover {
+    background: #f2f5ea;
+    color: #bb3a58;
+    border: #bb3a58 solid 2px;
+  }
+  
+  /* Sign Up button */
+  .signup-btn {
+    background: #f2f5ea;
+    color: #9d2340;
+    width: 32%;
+  }
+  
+  .signup-btn:hover {
+    background: #bb3a58;
+    color: #f2f5ea;
+    border: #f2f5ea solid 2px;
+  }
+  
+  /* Forgot password link */
+  .forgot-password {
+    display: block;
+    margin: 10px 0;
+    font-size: 14px;
+    text-decoration: none;
+    color: #a01939;
+  }
+  
+  .forgot-password:hover {
+    text-decoration: underline;
+  }
+  .navbar-buttons {
+    position: absolute;  /* Posizione assoluta per spostarlo */
+    top: 20px;  /* Distanza dall'alto */
+    left: 20px;  /* Distanza dal lato sinistro */
+    z-index: 1000;  /* Assicurati che il bottone si sovrapponga ad altri elementi */
+}
+.back-button {
+    background-color: #BB3A58;
+    border: none;
+    color: #fff;
+    padding: 8px 15px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.back-button:hover{
+    background-color: #fff;
+    color: #BB3A58;
+}

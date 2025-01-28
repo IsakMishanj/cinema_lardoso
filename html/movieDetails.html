@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style_moviesDetails.CSS">
+    <title>Movie Details</title>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <a href="../html/home.html">
+                <img class="logo-image" src="../img/logo-sito.png" alt="Logo">
+            </a>
+        </div>
+        <ul class="navbar-menu">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="utentiTop.html">User</a></li>
+            <li><a href="moviesTop.html">Movies</a></li>
+        </ul>
+        </ul>
+        <div class="navbar-buttons">
+            <button class="login-button" onclick="window.location.href='login.html'">Login</button>
+        </div>
+    </nav>
+
+    <div class="movie-details-container">
+        <div class="movie-header">
+            <img id="movie-poster" src="" alt="Movie Poster">
+            <div class="movie-info">
+                <h1 id="movie-title"></h1>
+                <p><strong>Anno di uscita:</strong> <span id="movie-year"></span></p>
+                <p><strong>Genere:</strong> <span id="movie-genre"></span></p>
+                <p><strong>Regista:</strong> <span id="movie-direction"></span></p>
+                <p><strong>Cast:</strong> <span id="movie-cast"></span></p>
+                <p><a id="movie-trailer" href="">Guarda il trailer.</a></p>
+                <div class="rating-container">
+                    <svg width="100" height="100">
+                        <circle class="background-circle" cx="50" cy="50" r="45" />
+                        <circle class="circle" cx="50" cy="50" r="45" />
+                    </svg>
+                    <div class="rating-text" id="rating-text">0</div>
+                </div>
+
+                <button class="back-button" onclick="goBack()">Indietro</button>
+            </div>
+        </div>
+
+        <div class="movie-description">
+            <h2>Descrizione:</h2>
+            <p id="movie-description">
+                Shrek, a green ogre, lives in the swamp until his peaceful life is disrupted by fairy tale creatures.
+                To reclaim his home, he sets out on an adventure that leads to unexpected friendships and love.
+            </p>
+        </div>
+        <div class="reviews">
+            <!-- Le recensioni verranno caricate dinamicamente qui -->
+            
+        </div>
+        <div class="movies-correlated">
+            <h2>Film Correlati:</h2>
+            <div class="carosello-container">
+                <button class="carousel-button left" onclick="scrollCarousel(-1)" aria-label="Scorri a sinistra">&#10094;</button>
+                <div id="related-movies" class="movies-carosello">
+                    <p class="no-movies-message">Nessun film correlato trovato.</p>
+                </div>
+            <button class="carousel-button right" onclick="scrollCarousel(1)" aria-label="Scorri a destra">&#10095;</button>
+        </div>
+    </div>
+    
+    <div class="modal" id="review-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Aggiungi Recensione</h2>
+                <button class="close-button" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <input type="text" name="newreview-title" id="newreview-title" placeholder="Inserisci un titolo">
+                <select id="newreview-rating" name="review-rating" required>
+                    <option value="">Seleziona</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <textarea id="review-text" placeholder="Scrivi la tua recensione..."></textarea>
+            </div>
+            <div class="modal-footer">
+                <button class="cancel-button" onclick="closeModal()">Annulla</button>
+                <button class="submit-button" onclick="submitReview()">Invia</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/script_movieDetails.js"></script>
+</body>
+</html>
