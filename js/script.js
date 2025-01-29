@@ -53,7 +53,7 @@ $.ajax({
         <div class="card-img" style="background-image: url('${film.locandina}');"></div>
         <div class="card-info">
           <p class="text-title">${film.titolo_f}</p>
-          <p class="text-body">${film.nome_g} - ${data} - ${film.durata}</p>
+          <p class="text-body">${film.nome_g} - ${data} - ${film.durata} min</p>
         </div>
       </div>`;
       moviesGrid.append(movieCard);
@@ -134,6 +134,7 @@ async function login() {
 
     if (response.ok) {
       const user = await response.json();
+      console.log(user);
       localStorage.setItem("utente", JSON.stringify(user));
 
       // Recupera l'ID del team

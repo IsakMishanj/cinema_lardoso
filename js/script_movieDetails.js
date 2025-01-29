@@ -48,15 +48,6 @@ try {
 }
 });
 
-function renderRating(rating) {
-if (typeof rating === "number") {
-  return rating.toFixed(1); // o il numero di decimali che desideri
-} else {
-  console.error(`Errore: rating non è un numero. Valore ricevuto:`, rating);
-  return "N/A"; // Restituisci un valore di fallback
-}
-}
-
 function setRating(value) {
 const circle = document.querySelector('.circle');
 const ratingText = document.getElementById('rating-text');
@@ -70,7 +61,7 @@ circle.style.strokeDashoffset = offset;
 // Change circle color based on value
 if (value <= 2) {
   circle.style.stroke = '#f44336'; // Red for low ratings
-} else if (value <= 4) {
+} else if (value < 4) {
   circle.style.stroke = '#ffeb3b'; // Yellow for medium ratings
 } else {
   circle.style.stroke = '#4caf50'; // Green for high ratings
@@ -81,12 +72,14 @@ let currentValue = 0;
 const interval = setInterval(() => {
   if (currentValue >= value) {
     clearInterval(interval);
-  } else {
-    currentValue += 0.1;
+  }
+  else {
+    currentValue = Math.min(currentValue + 0.1, 5.0);
     ratingText.textContent = currentValue.toFixed(1);
   }
-}, 50);
+}, 20);
 }
+
 
 // Funzione per tornare indietro
 function goBack() {
@@ -216,17 +209,68 @@ function closeModal() {
 function openModal() {
   document.getElementById('review-modal').style.display = 'flex';
 }
+// 
+// 
+// 
+// 
+// 
+// 
+document.addEventListener("DOMContentLoaded", closeModal); 
 
-function submitReview() {
-  const reviewText = document.getElementById('review-text').value;
-  if (reviewText.trim() !== "") {
-      alert("Recensione inviata: " + reviewText);
+async function submitReview() { 
+  const urlParams = new URLSearchParams(window.location.search);
+  const movieId = urlParams.get("ID"); 
+  const user = JSON.parse(localStorage.getItem("utente"));
+
+  const titolo_r = document.getElementById("newreview-title").value;
+  const testo = document.getElementById("review-text").value;
+  const valutazione = document.getElementById("newreview-rating").value;
+  
+  if (!movieId) {
+      console.error("Errore: ID del film non trovato.");
+      return;
+  }
+  const userId = user.userId;
+  const reviewData = {
+      userId,
+      movieId,
+      titolo_r,
+      testo,
+      valutazione: parseInt(valutazione) // Assicura che sia un numero intero
+  };
+
+  try {
+      const response = await fetch("/recensione", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify(reviewData)
+      });
+
+      if (!response.ok) {
+          const errorText = await response.text();
+          throw new Error(`Errore ${response.status}: ${errorText}`);
+      }
+
+      const data = await response.json();
+      console.log("Recensione inviata con successo:", data);
+      window.location.reload();
       closeModal();
-  } else {
-      alert("Per favore, scrivi una recensione prima di inviare.");
+      return data;
+  } catch (error) {
+      console.error("Errore durante l'invio della recensione:", error.message);
   }
 }
 
+// 
+// 
+//
+//  
+// 
+// 
+// 
+// 
 document.addEventListener("DOMContentLoaded", function () {
   const navbarButtons = document.querySelector(".navbar-buttons");
 

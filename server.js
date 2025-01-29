@@ -1,12 +1,13 @@
 const express = require("express");
 const cors = require("cors");
 const bcrypt = require('bcrypt');
+const jwt = require("jsonwebtoken");
 const { Pool } = require("pg");
 const path = require("path");
 require("dotenv").config();
 
 const app = express();
-const port = 3001;
+const port = 3000;
 
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 app.get("/", (req, res) => {
@@ -24,17 +25,6 @@ app.use("/css", express.static(path.join(__dirname, "css")));
 app.use("/js", express.static(path.join(__dirname, "js")));
 app.use("/img", express.static(path.join(__dirname, "img")));
 app.use(express.json());
-
-// app.get("/genere", async (req, res) => {
-//   try {
-//     const { rows } = await pool.query("SELECT * FROM genere");
-//     res.json(rows);
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).send("Errore del server");
-//   }
-// });
-
 
 //per carcare dal db
 app.get("/film", async (req, res) => { 
@@ -66,11 +56,6 @@ app.get("/film", async (req, res) => {
     res.status(500).send("Errore del server");
   }
 });
-
-
-
-
-
 
 //FILTRAGGIO
 app.get('/api/film', async (req, res) => {
@@ -148,8 +133,6 @@ app.get('/api/film', async (req, res) => {
   }
 });
 
-
-
 //SIGNUP
 app.post("/signup", async (req, res) => {
   const { nome_utente, email, password } = req.body;
@@ -218,11 +201,12 @@ app.post("/login", async (req, res) => {
     }
 
     res.status(200).json({
-    
       username: user.nome_utente,
       email: user.email,
-      password: user.password
+      password: user.password,
+      userId : user.idu
     });
+
   } catch (error) {
     console.error("Errore durante il login:", error);
     res.status(500).json({ error: error.message });
@@ -251,13 +235,7 @@ app.get("/getUserTeam/:userId", async (req, res) => {
   }
 });
 
-
-
-
-
-
 //parte visualizzazione
-
 app.get("/api/related-movies", async (req, res) => {
   const movieId = parseInt(req.query.idF, 10);
   if (!movieId) {
@@ -286,36 +264,6 @@ app.get("/api/related-movies", async (req, res) => {
   }
 }); 
 
-
-
-
-// app.get("/topCommenters.html", (req, res) => {
-//   res.sendFile(path.join(__dirname, "html", "topCommenters.html"));
-// });
-
-
-
-
-// app.get("/api/top-commenters", async (req, res) => {
-//   try {
-//     const query = `
-//       SELECT 
-//         u.idu, 
-//         u.nome_utente, 
-//         COUNT(r.idr) AS numero_commenti
-//       FROM utente u
-//       LEFT JOIN recensione r ON u.idu = r.idu
-//       GROUP BY u.idu, u.nome_utente
-//       ORDER BY numero_commenti DESC
-//       LIMIT 10;
-//     `;
-//     const { rows } = await pool.query(query);
-//     res.json(rows);
-//   } catch (error) {
-//     console.error("Errore nel recupero degli utenti più attivi:", error);
-//     res.status(500).json({ error: "Errore interno del server" });
-//   }
-// });
 ///COMMENTATORE INCREDIBILE
 app.get("/top-users", (req, res) => {
   res.sendFile(path.join(__dirname, "html", "top-users.html"));
@@ -342,13 +290,10 @@ app.get("/api/top-users", async (req, res) => {
   }
 });
 
-
 //FILM PIù COMMENTATI
-
 app.get("/mostCommentedMovies.html", (req, res) => {
   res.sendFile(path.join(__dirname, "html", "mostCommentedMovies.html"));
 });
-
 
 app.get("/api/most-commented-movies", async (req, res) => {
   try {
@@ -373,12 +318,6 @@ app.get("/api/most-commented-movies", async (req, res) => {
   }
 });
 
-
-
-
-//TOKEN
-const jwt = require("jsonwebtoken");
-
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
@@ -399,13 +338,12 @@ app.post("/login", async (req, res) => {
       return res.status(401).json({ error: "Credenziali non valide" });
     }
 
-    const token = jwt.sign({ id: user.idu }, process.env.JWT_SECRET, { expiresIn: "1h" });
-
     res.status(200).json({
+      userId: user.idu,
       username: user.nome_utente,
-      email: user.email,
-      token,
+      email: user.email
     });
+
   } catch (error) {
     console.error("Errore durante il login:", error);
     res.status(500).json({ error: error.message });
@@ -426,17 +364,6 @@ const authenticateToken = (req, res, next) => {
 app.get("/api/protected", authenticateToken, (req, res) => {
   res.json({ message: "Accesso autorizzato", user: req.user });
 });
-
-
-//sempre in fondo
-app.listen(port, () => {
-    console.log(`Server avviato su http://localhost:${port}`);
-  });
-  
-
-  // SELECT * FROM film JOIN film_genere ON film.idf = film_genere.idf JOIN genere ON film_genere.idg = genere.idg; 
-  // SELECT film.idf, film.titolo, film.durata, ARRAY_AGG(DISTINCT genere.nome) AS generiFROM filmJOIN film_genere ON film.idf = film_genere.idfJOIN genere ON film_genere.idg = genere.idgGROUP BY film.idf, film.titolo, film.durata;
-
 
   app.get("/film/:id", async (req, res) => {
     const { id } = req.params;
@@ -512,43 +439,86 @@ app.get("/recensioni/:movieId", async (req, res) => {
   }
 });
 
-
-  // SELECT * FROM film JOIN film_genere ON film.idf = film_genere.idf JOIN genere ON film_genere.idg = genere.idg; 
-  // SELECT film.idf, film.titolo, film.durata, ARRAY_AGG(DISTINCT genere.nome) AS generiFROM filmJOIN film_genere ON film.idf = film_genere.idfJOIN genere ON film_genere.idg = genere.idgGROUP BY film.idf, film.titolo, film.durata;
-
-
-
-
-
-
-  app.get("/api/related-movies", async (req, res) => {
-    const movieId = parseInt(req.query.idF, 10);
-    if (!movieId) {
-      return res.status(400).json({ error: "ID film non fornito" });
-    }
+app.get("/api/related-movies", async (req, res) => {
+  const movieId = parseInt(req.query.idF, 10);
+  if (!movieId) {
+    return res.status(400).json({ error: "ID film non fornito" });
+  }
   
-    try {
-      const query = `
-        SELECT DISTINCT f.idF, f.titolo_f, f.regista, 
-               ARRAY_AGG(g.nome_g) AS generi
-        FROM Film f
-        JOIN Film_Genere fg ON f.idF = fg.idF
-        JOIN Genere g ON fg.idG = g.idG
-        WHERE f.idF != $1
-          AND (f.regista = (SELECT regista FROM Film WHERE idF = $1)
-               OR fg.idG IN (
-                   SELECT idG FROM Film_Genere WHERE idF = $1
-               ))
-        GROUP BY f.idF, f.titolo_f, f.regista;
-      `;
-      const result = await pool.query(query, [movieId]);
-      res.json(result.rows);
-    } catch (error) {
-      console.error("Errore nel recupero dei film correlati:", error);
-      res.status(500).json({ error: "Errore interno del server" });
+  try {
+    const query = `
+      SELECT DISTINCT f.idF, f.titolo_f, f.regista, 
+             ARRAY_AGG(g.nome_g) AS generi
+      FROM Film f
+      JOIN Film_Genere fg ON f.idF = fg.idF
+      JOIN Genere g ON fg.idG = g.idG
+      WHERE f.idF != $1
+        AND (f.regista = (SELECT regista FROM Film WHERE idF = $1)
+             OR fg.idG IN (
+                 SELECT idG FROM Film_Genere WHERE idF = $1
+             ))
+      GROUP BY f.idF, f.titolo_f, f.regista;
+    `;
+    const result = await pool.query(query, [movieId]);
+    res.json(result.rows);
+  } catch (error) {
+    console.error("Errore nel recupero dei film correlati:", error);
+    res.status(500).json({ error: "Errore interno del server" });
+  }
+}); 
+
+app.post("/recensione", async (req, res) => {
+  console.log("Richiesta ricevuta:", req.body); 
+  const {userId, movieId, titolo_r, testo, valutazione } = req.body;
+  
+  // Verifica che tutti i dati necessari siano presenti
+  if (!userId || !movieId || !titolo_r || !testo || !valutazione) {
+    return res.status(400).json({ error: "Tutti i campi sono obbligatori" });
+  }
+  
+  try {
+      // Verifica che il film esista
+     const movieCheck = await pool.query("SELECT * FROM film WHERE idf = $1", [movieId]);
+    if (movieCheck.rows.length === 0) {
+      return res.status(404).json({ error: "Film non trovato" });
     }
-  }); 
 
+    const userCheck = await pool.query("SELECT * FROM film WHERE idf = $1", [userId]);
+    if (userCheck.rows.length === 0) {
+      return res.status(404).json({ error: "Utente non identificato" });
+    }
+      
+    if (!Number.isInteger(valutazione) || valutazione < 1 || valutazione > 5) {
+      return res.status(400).json({ error: "Valutazione non valida. Deve essere tra 1 e 5." });
+    }
 
+    // Inserisci la recensione nel database
+    console.log("Inserendo recensione...");
+    const result = await pool.query(
+      "INSERT INTO recensione (idu, idf, titolo_r, testo, valutazione) VALUES ($1, $2, $3, $4, $5) RETURNING *",
+      [userId, movieId, titolo_r, testo, valutazione]
+    );console.log("Recensione inserita:", result.rows[0]);
+  
+    // Restituisci la recensione appena inserita
+    res.status(201).json(result.rows[0]);
+  } catch (error) {
+    console.error("Errore nell'inserimento della recensione:", error.message);
+    res.status(500).json({ error: "Errore durante l'inserimento della recensione" });
+  }
+});
+  
+const testConnection = async () => {
+  try {
+    await pool.query('SELECT NOW()');
+    console.log("Connessione al database riuscita");
+  } catch (err) {
+    console.error("Errore di connessione al database:", err);
+  }
+};
+  
+testConnection();
 
-
+//sempre in fondo
+app.listen(port, () => {
+  console.log(`Server avviato su http://localhost:${port}`);
+});
