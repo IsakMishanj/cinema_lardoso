@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>CINEMA LARDO</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <a href="index.html">
+                <img class="logo-image" src="../img/logo-sito.png" alt="Logo" class="logo-image">
+            </a>
+        </div>
+        <ul class="navbar-menu">
+            <li><a class="active" href="home.html">Home</a></li>
+            <li><a href="utentiTop.html">User</a></li>
+            <li><a href="moviesTop.html">Movies</a></li>
+        </ul>
+        <div class="navbar-buttons">
+            
+            <button class="login-button" onclick="window.location.href='login.html'">Login</button>
+        </div>
+    </nav>
+    <div class="filter-container">
+        <tr>
+            <td>   
+                <select id="genre" name="genre" placeholder="Genre">
+                    <option value="">Genre</option>
+                    <option value="10">Drammatico</option>
+                    <option value="11">Thriller</option>
+                    <option value="12">Azione</option>
+                    <option value="13">Commedia</option>
+                    <option value="14">Fantasy</option>
+                    <option value="15">Horror</option>
+                    <option value="16">Animazione</option>
+                    <option value="17">Avventura</option>
+                    <option value="18">Documentario</option>
+                    <option value="19">Biografico</option>
+                    <option value="20">Musical</option>
+                    <option value="21">Mistero</option>
+                    <option value="22">Romantico</option>
+                    <option value="23">Storico</option>
+                    <option value="24">Guerra</option>
+                    <option value="25">Western</option>
+                    <option value="26">Fantascienza</option>
+                    <option value="27">Sportivo</option>
+                    <option value="28">Crimine</option>
+                    <option value="29">Famiglia</option>
+                    <option value="30">Noir</option>
+                    <option value="31">Poliziesco</option>
+                    <option value="32">Supereroi</option>
+                    <option value="33">Catastrofico</option>
+                    <option value="34">Psicologico</option>
+                    <option value="35">Sperimentale</option>
+                    <option value="36">Mitologico</option>
+                    <option value="37">Cortometraggio</option>
+                    <option value="38">Erotico</option>
+                    <option value="39">Satirico</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <select id="country" name="country" placeholder="Country">
+                    <option value="">Country</option>
+                    <option value="usa">USA</option>
+                    <option value="italia">Italy</option>
+                    <option value="germany">Germany</option>
+                    <option value="belgium">Belgium</option>
+                    <option value="finland">Finland</option>
+                    <option value="france">France</option>
+                </select>
+            </td>
+            </tr>
+            <tr>
+                <td>
+                    <select name="years" id="years">
+                        <option value="">Year</option>
+                        <!-- Anni dal 1945 al 2024 -->
+                        <script>
+                        for (let year = 2024; year >= 1945; year--) {
+                            document.write(`<option value="${year}">${year}</option>`);
+                        }
+                        </script>
+                    </select>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="search"></label>
+                    <input type="text" id="search" name="search" placeholder="Titolo o descrizione">
+                    
+                </td>
+            </tr>
+            
+        
+    </div>
+    <div class="moivies-area">
+        <h2></h2>
+        <div class="movies-grid">
+        <!-- Le card sono qui -->
+    </div>
+    </div>
+    
+
+    
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <script src="../js/script.js"></script>
+    
+</body>
+
+</html>

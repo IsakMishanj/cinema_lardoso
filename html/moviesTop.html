@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Film più commentati</title>
+  <link rel="stylesheet" href="../css/styleFilm.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <a href="index.html">
+                <img class="logo-image" src="../img/logo-sito.png" alt="Logo" class="logo-image">
+            </a>
+        </div>
+        <ul class="navbar-menu">
+            <li><a href="home.html">Home</a></li>   
+            <li><a href="utentiTop.html">Users</a></li>
+            <li><a class="active" href="moviesTop.html">Movies</a></li>
+            
+            <!-- <li><a href="imdb.html">Top IMDB</a></li> -->
+        </ul>
+        <div class="navbar-buttons">
+            
+            <button class="login-button" onclick="window.location.href='login.html'">Login</button>
+        </div>
+            <!-- <button class="filter-button">Filter</button> -->
+    
+    </nav>
+    <table>
+        <thead>
+          <tr>
+            <th>Posizione</th>
+            <th>Immagine</th>
+            <th>Titolo</th>
+            <th>Numero di Commenti</th>
+          </tr>
+        </thead>
+        <tbody id="mostCommentedMoviesTable"></tbody>
+      </table>
+      
+  <script src="../js/film.js"></script>
+</body>
+</html>
