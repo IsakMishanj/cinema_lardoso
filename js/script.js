@@ -141,20 +141,10 @@ async function login() {
     if (response.ok) {
       const user = await response.json();
       localStorage.setItem("utente", JSON.stringify(user));
-
-      // Recupera l'ID del team
-      // const teamResponse = await fetch(`/getUserTeam/${user.idu}`);
-      // if (teamResponse.ok) {
-      //   const { teamId } = await teamResponse.json();
-      //   localStorage.setItem("teamId", JSON.stringify(teamId));
-      // } else {
-      //   console.warn("Nessun team trovato per l'utente.");
-      //   localStorage.removeItem("teamId");
-      // }
-
-      // alert("Login effettuato con successo!");
-      // Redirigi al Team Management o Dashboard
       window.location.href = "home.html";
+    }else{
+      console.error("Credenziali non valide", error);
+      alert("Credenziali non valide");
     }
   } catch (error) {
     console.error("Errore durante il login", error);
