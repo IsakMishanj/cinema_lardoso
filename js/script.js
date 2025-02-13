@@ -180,18 +180,28 @@ async function signupfun(){
   }
 
   //SELECT PAESI
-  fetch('/api/paesi')
-  .then(response => response.json())
-  .then(paesi => {
-      const select = document.getElementById('country');
-      paesi.forEach(p => {
-          const option = document.createElement('option');
-          option.value = p.paese;
-          option.textContent = p.paese;
-          select.appendChild(option);
-      });
-  })
-  .catch(error => console.error('Errore:', error));
+  document.addEventListener("DOMContentLoaded", function () {
+    fetch('/api/paesi')
+        .then(response => response.json())
+        .then(paesi => {
+            console.log("Paesi ricevuti:", paesi); // Debug
+            const select = document.getElementById('country');
+
+            if (paesi.length === 0) {
+                console.warn("Nessun paese disponibile!");
+            }
+
+            paesi.forEach(p => {
+                const option = document.createElement('option');
+                option.value = p.paese;
+                option.textContent = p.paese;
+                select.appendChild(option);
+            });
+
+            console.log("Elementi nel select:", select.innerHTML);
+        })
+        .catch(error => console.error("Errore:", error));
+});
 
   //SELECT GENERI
   // Recupera i generi dal server e popola il <select>

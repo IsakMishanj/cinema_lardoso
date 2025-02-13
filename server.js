@@ -7,7 +7,7 @@ const path = require("path");
 require("dotenv").config();
 
 const app = express();
-const port = 3033;
+const port = 3333;
 
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 app.get("/", (req, res) => {
@@ -213,13 +213,14 @@ app.get('/api/paesi', async (req, res) => {
   try {
       const result = await pool.query(
           `SELECT DISTINCT paese 
-           FROM Film 
+           FROM film 
            WHERE paese IS NOT NULL AND paese != ''`
       );
-      res.json(result.rows); // Invia i risultati come JSON
+      console.log("Paesi inviati all'API:", result.rows); // Debug
+      res.json(result.rows);
   } catch (err) {
-      console.error(err);
-      res.status(500).send('Errore del server');
+      console.error("Errore nel server:", err);
+      res.status(500).json({ error: "Errore del server", details: err.message });
   }
 });
 
