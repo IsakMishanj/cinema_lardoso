@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>CINEMA LARDO</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <a href="home.html">
+                <img class="logo-image" src="../img/logo-sito.png" alt="Logo" class="logo-image">
+            </a>
+        </div>
+
+        <ul class="navbar-menu">
+            <li><a class="active" href="home.html">Home</a></li>
+            <li><a href="utentiTop.html">Utenti</a></li>
+            <li><a href="moviesTop.html">Migliori film</a></li>
+        </ul>
+
+        <div class="navbar-buttons">
+            <button class="login-button" onclick="window.location.href='login.html'">Login</button>
+        </div>
+    </nav>
+    <div class="filter-container">
+        <tr>
+            <td>   
+                <select id="genre" name="genre" placeholder="Genere">
+                    <option value="">Genre</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <select id="country" name="country" placeholder="Paese">
+                    <option value="">Country</option>
+                </select>
+            </td>
+            </tr>
+            <tr>
+                <td>
+                    <select name="years" id="years">
+                        <option value="">Anno</option>
+                        <!-- Anni dal 1945 al 2024 -->
+                        <script>
+                        for (let year = 2025; year >= 1891; year--) {
+                            document.write(`<option value="${year}">${year}</option>`);
+                        }
+                        </script>
+                    </select>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="search"></label>
+                    <input type="text" id="search" name="search" placeholder="Titolo o descrizione">
+                    
+                </td>
+            </tr>
+            
+        
+    </div>
+    <div class="moivies-area">
+        <h2></h2>
+        <div class="movies-grid">
+        <!-- Le card sono qui -->
+    </div>
+    </div>
+    
+
+    
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <script src="../js/script.js"></script>
+    
+</body>
+
+</html>

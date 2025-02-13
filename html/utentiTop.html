@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/styleUte.css">
+    <title>CINEMA LARDO</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <a href="home.html">
+                <img class="logo-image" src="../img/logo-sito.png" alt="Logo" class="logo-image">
+            </a>
+        </div>
+        <ul class="navbar-menu">
+            <li><a href="home.html">Home</a></li>   
+            <li><a class="active" href="utentiTop.html">Utenti</a></li>
+            <li><a href="moviesTop.html">Migliori film</a></li>
+        </ul>
+        <div class="navbar-buttons"> 
+            <button class="login-button" onclick="window.location.href='login.html'">Login</button>
+        </div>
+    </nav>
+
+    <div class="leaderboard-container">
+      <h1>Classifica Utenti</h1>
+      <table class="leaderboard">
+        <thead>
+          <tr>
+            <th>Posizione</th>
+            <th>Utente</th>
+            <th>Commenti</th>
+          </tr>
+        </thead>
+        <tbody id="leaderboard-body">
+          <!-- Dati caricati dinamicamente -->
+        </tbody>
+      </table>
+    </div>
+    <script src="../js/utenti.js"></script>
+    
+</body>
+
+</html>
